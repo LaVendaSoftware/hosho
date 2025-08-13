@@ -1,4 +1,4 @@
 [tools]
-bun = "1.2.20"
+node = "22.14.0"
 postgres = "17.2"
 ruby = "3.4.5"
