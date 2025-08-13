@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies
   def index
-    @companies = Company.all
+    render Views::Companies::Index.new(companies: Company.all, notice: flash[:notice])
   end
 
   # GET /companies/1
