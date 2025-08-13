@@ -1,14 +1,11 @@
 class Views::Companies::Index < Views::Base
   include Phlex::Rails::Helpers::LinkTo
 
-  def initialize(companies:, notice:)
+  def initialize(companies:)
     @companies = companies
-    @notice = notice
   end
 
   def view_template
-    p(style: "color:#008000") { @notice }
-
     Components::Page::Title(title: "Companies")
 
     div(id: "companies") do

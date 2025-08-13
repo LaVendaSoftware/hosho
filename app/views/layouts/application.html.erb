@@ -29,6 +29,10 @@
       <%= render(Components::Sidebar::Sidebar.new) %>
 
       <main class="flex-1 p-8">
+        <%= render(Components::Flashes::Success.new(message: flash[:notice])) %>
+        <%= render(Components::Flashes::Error.new(message: flash[:alert])) %>
+        <%= render(Components::Flashes::Warning.new(message: "Companies not found")) %>
+
         <%= yield %>
       </main>
     </div>

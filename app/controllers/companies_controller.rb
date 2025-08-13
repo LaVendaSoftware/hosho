@@ -3,7 +3,9 @@ class CompaniesController < ApplicationController
 
   # GET /companies
   def index
-    render Views::Companies::Index.new(companies: Company.all, notice: flash[:notice])
+    flash[:notice] = "Company was successfully created"
+    flash[:alert] = "Company can't be created"
+    render Views::Companies::Index.new(companies: Company.all)
   end
 
   # GET /companies/1
