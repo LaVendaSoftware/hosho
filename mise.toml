@@ -1,0 +1,4 @@
+[tools]
+bun = "1.2.20"
+postgres = "17.2"
+ruby = "3.4.5"
