@@ -22,7 +22,17 @@
     <%= javascript_include_tag("application", "data-turbo-track": "reload", type: "module") %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="min-h-screen flex flex-col bg-background text-foreground">
+    <%#= render(Components::Navbar::Navbar.new) %>
+
+    <div class="flex flex-1">
+      <%= render(Components::Sidebar::Sidebar.new) %>
+
+      <main class="flex-1 p-8">
+        <%= yield %>
+      </main>
+    </div>
+
+    <%#= render(Components::Footer::Footer.new) %>
   </body>
 </html>
