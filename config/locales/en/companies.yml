@@ -1,0 +1,19 @@
+en:
+  activerecord:
+    models:
+      user:
+        one: "Company"
+        zero: "Companies"
+        other: "Companies"
+    attributes:
+      user:
+        nome: "Name"
+        nif: "NIF"
+        industry: "Industry"
+        disabled: "Disabled?"
+        disabled_at: "Disabled at"
+      user/industries:
+        tourism: "Travel & Hospitality"
+        commerce: "Retail & Commerce"
+        food: "Food & Beverage"
+        automotive: "Automotive"
