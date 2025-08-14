@@ -1,21 +1,43 @@
 class Views::Companies::Index < Views::Base
-  include Phlex::Rails::Helpers::LinkTo
-
   def initialize(companies:)
     @companies = companies
   end
 
   def view_template
-    Components::Page::Title(title: "Companies")
-
-    div(id: "companies") do
-      @companies.each do |company|
-        render(Views::Companies::Company.new(company:))
-
-        p { link_to "Show this company", company }
-      end
+    div(class: "flex mb-4") do
+      div(class: "flex-1") { Components::Page::Title(title: "Companies") }
+      Components::LinkTo::New("New company", new_company_path)
     end
 
-    link_to "New company", new_company_path
+    return render(Flashes::Warning.new(message: "Companies not found")) unless @companies.exists?
+
+    div(id: "companies") do
+      Table do
+        # TableCaption { "Employees at Acme inc." }
+        TableHeader do
+          TableRow do
+            TableHead { "Name" }
+            TableHead { "NIF" }
+            TableHead { "Industry" }
+          end
+        end
+
+        TableBody do
+          @companies.each do |company|
+            TableRow do
+              TableCell(class: "font-medium") { company.name }
+              TableCell { company.nif }
+              TableCell { company.industry }
+            end
+          end
+        end
+        TableFooter do
+          TableRow do
+            TableHead(class: "font-medium", colspan: 3) { "Total" }
+            TableHead(class: "font-medium text-right") { @companies.size }
+          end
+        end
+      end
+    end
   end
 end

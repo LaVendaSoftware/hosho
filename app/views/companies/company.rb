@@ -8,7 +8,7 @@ class Views::Companies::Company < Views::Base
   end
 
   def view_template
-    div(id: (dom_id(company))) do
+    div(id: dom_id(company)) do
       p do
         strong { "Name:" }
         plain company.name
