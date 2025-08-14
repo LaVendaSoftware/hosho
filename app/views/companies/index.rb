@@ -29,7 +29,7 @@ class Views::Companies::Index < Views::Base
               TableCell(class: "font-medium") { company.name }
               TableCell { company.nif }
               TableCell { company.industry }
-              TableCell { company.disabled?.to_json }
+              TableCell { Components::Boolean::String(company.disabled?) }
             end
           end
         end
