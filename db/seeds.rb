@@ -1,9 +1,13 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+ActiveRecord::Base.transaction do
+  next unless Rails.env.development?
+
+  puts "🚀 Seed started..."
+
+  puts "* Create companies"
+  Company.tourism.create!(name: "Sun & Sea Tours", nif: "12345678-9")
+  Company.commerce.create!(name: "HomeStyle Furniture", nif: "98765432-1")
+  Company.food.create!(name: "Bean & Brew Café", nif: "45612378-9")
+  Company.automotive.create!(name: "AutoDrive Dealership", nif: "78932145-6")
+
+  puts "✅ Seed finished successfully"
+end
