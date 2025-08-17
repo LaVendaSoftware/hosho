@@ -15,11 +15,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_13_121907) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "companies", force: :cascade do |t|
+    t.string "pid", default: "", null: false
     t.string "name", null: false
     t.string "nif"
     t.integer "industry"
     t.datetime "disabled_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_companies_on_name", unique: true
+    t.index ["pid"], name: "index_companies_on_pid", unique: true
   end
 end

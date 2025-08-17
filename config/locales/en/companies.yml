@@ -13,6 +13,7 @@ en:
         disabled: "Disabled?"
         disabled_at: "Disabled at"
       user/industries:
+        other: "Other"
         tourism: "Travel & Hospitality"
         commerce: "Retail & Commerce"
         food: "Food & Beverage"

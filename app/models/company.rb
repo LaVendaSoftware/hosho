@@ -1,7 +1,9 @@
 class Company < ApplicationRecord
-  validates :name, presence: true
+  include PIDable
 
-  enum :industry, {tourism: 0, commerce: 1, food: 2, automotive: 3}
+  validates :name, presence: true, uniqueness: true
+
+  enum :industry, {other: 0, tourism: 1, commerce: 2, food: 3, automotive: 4}
 
   def disabled? = disabled_at.present?
 end

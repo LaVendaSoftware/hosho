@@ -13,6 +13,7 @@ pt:
         disabled: "Desativado?"
         disabled_at: "Desativado em"
       user/industries:
+        other: "Outro"
         tourism: "Turismo e Hospitalidade"
         commerce: "Varejo e Comércio"
         food: "Alimentação e Bebidas"
