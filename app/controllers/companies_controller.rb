@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: %i[ show edit update destroy ]
+  before_action :set_company, only: %i[show edit update destroy]
 
   # GET /companies
   def index
@@ -24,7 +24,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      redirect_to @company, notice: "Company was successfully created."
+      redirect_to @company, notice: t(".success")
     else
       render Views::Companies::New.new(company: @company), status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   def update
     if @company.update(company_params)
-      redirect_to @company, notice: "Company was successfully updated.", status: :see_other
+      redirect_to @company, notice: t(".success"), status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,17 +42,16 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   def destroy
     @company.destroy!
-    redirect_to companies_path, notice: "Company was successfully destroyed.", status: :see_other
+    redirect_to companies_path, notice: t(".success"), status: :see_other
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_company
-      @company = Company.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def company_params
-      params.expect(company: [ :name, :nif, :industry ])
-    end
+  def set_company
+    @company = Company.find(params.expect(:id))
+  end
+
+  def company_params
+    params.expect(company: [:name, :nif, :industry])
+  end
 end

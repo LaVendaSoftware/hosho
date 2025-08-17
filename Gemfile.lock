@@ -1,3 +1,28 @@
+PATH
+  remote: /Users/walmir/workspace/github.com/LaVendaSoftware/craby
+  specs:
+    craby (0.0.5)
+      brakeman
+      capybara
+      database_cleaner
+      erb_lint
+      factory_bot_rails
+      faker
+      rails-controller-testing
+      rspec-rails
+      rubocop-capybara
+      rubocop-factory_bot
+      rubocop-rspec
+      rubocop-rspec_rails
+      selenium-webdriver
+      shoulda-matchers
+      simplecov
+      simplecov-json
+      standard
+      standard-rails
+      vcr
+      webmock
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -101,27 +126,6 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.3)
-    craby (0.0.5)
-      brakeman
-      capybara
-      database_cleaner
-      erb_lint
-      factory_bot_rails
-      faker
-      rails-controller-testing
-      rspec-rails
-      rubocop-capybara
-      rubocop-factory_bot
-      rubocop-rspec
-      rubocop-rspec_rails
-      selenium-webdriver
-      shoulda-matchers
-      simplecov
-      simplecov-json
-      standard
-      standard-rails
-      vcr
-      webmock
     crack (1.0.0)
       bigdecimal
       rexml
@@ -482,7 +486,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  craby (~> 0.0.5)
+  craby!
   cssbundling-rails
   debug
   jsbundling-rails

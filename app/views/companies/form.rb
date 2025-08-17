@@ -16,13 +16,13 @@ class Views::Companies::Form < Views::Base
         FormField do
           FormFieldLabel(for: "company_name") { "Name" }
           Input(id: "company_name", name: "company[name]")
-          FormFieldError { company.errors.full_messages_for(:name).to_sentence   }
+          FormFieldError { company.errors.full_messages_for(:name).to_sentence }
         end
 
         FormField do
           FormFieldLabel(for: "company_nif") { "NIF" }
           Input(id: "company_nif", name: "company[nif]")
-          FormFieldError { company.errors.full_messages_for(:nif).to_sentence   }
+          FormFieldError { company.errors.full_messages_for(:nif).to_sentence }
         end
 
         FormField do
@@ -30,7 +30,6 @@ class Views::Companies::Form < Views::Base
           Input(id: "company_industry", name: "company[industry]")
           FormFieldError { company.errors.full_messages_for(:industry).to_sentence }
         end
-
 
         div(class: "flex gap-2 mt-4") do
           Components::LinkTo::Back(companies_path)

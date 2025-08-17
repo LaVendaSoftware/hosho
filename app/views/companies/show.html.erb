@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @company %>
+<%#= render @company %>
+<%= @company.inspect %>
 
 <div>
   <%= link_to "Edit this company", edit_company_path(@company) %> |

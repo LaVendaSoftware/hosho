@@ -1,4 +1,3 @@
-
 class Components::LinkTo::Back < Components::Base
   def initialize(url)
     @url = url
