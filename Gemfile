@@ -50,3 +50,5 @@ gem "phlex-rails", "~> 2.3"
 gem "tailwind_merge", "~> 1.3"
 # https://github.com/abachman/ulid-ruby#installation
 gem "ulid", "~> 1.4", require: "ulid"
+# https://github.com/LaVendaSoftware/ucasy#basic-usage
+gem "ucasy", "~> 0.3.3"
