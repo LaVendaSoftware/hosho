@@ -7,7 +7,7 @@ pt:
         other: "Empresas"
     attributes:
       company:
-        nome: "Nome"
+        name: "Nome"
         nif: "NIF" # Número de Identificação Fiscal
         industry: "Industria"
         disabled: "Desativado?"

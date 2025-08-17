@@ -7,7 +7,7 @@ en:
         other: "Companies"
     attributes:
       company:
-        nome: "Name"
+        name: "Name"
         nif: "NIF"
         industry: "Industry"
         disabled: "Disabled?"
