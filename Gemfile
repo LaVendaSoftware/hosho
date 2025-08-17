@@ -31,8 +31,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
   # https://github.com/LaVendaSoftware/craby#usage
-  # gem "craby", "~> 0.0.5"
-  gem "craby", path: "/Users/walmir/workspace/github.com/LaVendaSoftware/craby"
+  gem "craby", "~> 0.0.7"
 end
 
 group :development do
