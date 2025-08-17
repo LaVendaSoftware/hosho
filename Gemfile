@@ -32,13 +32,13 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   # https://github.com/LaVendaSoftware/craby#usage
   gem "craby", "~> 0.0.5"
-  # https://rubyui.com/docs/introduction
-  gem "ruby_ui", "~> 1.0", require: false
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  # https://rubyui.com/docs/introduction
+  gem "ruby_ui", "~> 1.0", require: false
 end
 
 # https://www.phlex.fun/introduction
