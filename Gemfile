@@ -48,3 +48,5 @@ end
 gem "phlex-rails", "~> 2.3"
 # https://github.com/gjtorikian/tailwind_merge?tab=readme-ov-file#usage
 gem "tailwind_merge", "~> 1.3"
+# https://github.com/abachman/ulid-ruby#installation
+gem "ulid", "~> 1.4", require: "ulid"
