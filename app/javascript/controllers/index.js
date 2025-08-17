@@ -7,6 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import RubyUi__ComboboxController from "./ruby_ui/combobox_controller"
+application.register("ruby-ui--combobox", RubyUi__ComboboxController)
+
 import RubyUi__FormFieldController from "./ruby_ui/form_field_controller"
 application.register("ruby-ui--form-field", RubyUi__FormFieldController)
 
