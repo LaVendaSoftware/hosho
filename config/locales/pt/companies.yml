@@ -1,18 +1,18 @@
 pt:
   activerecord:
     models:
-      user:
+      company:
         one: "Empresa"
         zero: "Empresas"
         other: "Empresas"
     attributes:
-      user:
+      company:
         nome: "Nome"
         nif: "NIF" # Número de Identificação Fiscal
         industry: "Industria"
         disabled: "Desativado?"
         disabled_at: "Desativado em"
-      user/industries:
+      company/industries:
         other: "Outro"
         tourism: "Turismo e Hospitalidade"
         commerce: "Varejo e Comércio"

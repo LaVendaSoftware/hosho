@@ -1,0 +1,4 @@
+pt:
+  true: "Sim"
+  false: "Não"
+  nil: "Vazio"

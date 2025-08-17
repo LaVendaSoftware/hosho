@@ -4,7 +4,7 @@ class Views::Companies::New < Views::Base
   end
 
   def view_template
-    Components::Page::Title(title: "New company")
+    Components::Page::Title(title: tm(Company))
 
     render(Views::Companies::Form.new(company: @company))
   end
