@@ -2,19 +2,19 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import HelloController from "./hello_controller";
+application.register("hello", HelloController);
 
-import RubyUi__ComboboxController from "./ruby_ui/combobox_controller"
-application.register("ruby-ui--combobox", RubyUi__ComboboxController)
+import RubyUi__ComboboxController from "./ruby_ui/combobox_controller";
+application.register("ruby-ui--combobox", RubyUi__ComboboxController);
 
-import RubyUi__FormFieldController from "./ruby_ui/form_field_controller"
-application.register("ruby-ui--form-field", RubyUi__FormFieldController)
+import RubyUi__FormFieldController from "./ruby_ui/form_field_controller";
+application.register("ruby-ui--form-field", RubyUi__FormFieldController);
 
-import RubyUi__SelectController from "./ruby_ui/select_controller"
-application.register("ruby-ui--select", RubyUi__SelectController)
+import RubyUi__SelectController from "./ruby_ui/select_controller";
+application.register("ruby-ui--select", RubyUi__SelectController);
 
-import RubyUi__SelectItemController from "./ruby_ui/select_item_controller"
-application.register("ruby-ui--select-item", RubyUi__SelectItemController)
+import RubyUi__SelectItemController from "./ruby_ui/select_item_controller";
+application.register("ruby-ui--select-item", RubyUi__SelectItemController);
