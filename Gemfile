@@ -39,6 +39,8 @@ group :development do
   gem "web-console"
   # https://rubyui.com/docs/introduction
   gem "ruby_ui", "~> 1.0", require: false
+  # https://github.com/railsjazz/rails_live_reload#usage
+  gem "rails_live_reload", "~> 0.5.0"
 end
 
 # https://www.phlex.fun/introduction
