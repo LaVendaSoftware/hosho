@@ -3,8 +3,6 @@ class CompaniesController < ApplicationController
 
   # GET /companies
   def index
-    flash[:notice] = "Company was successfully created"
-    flash[:alert] = "Company can't be created"
     render Views::Companies::Index.new(companies: Company.all)
   end
 
@@ -14,7 +12,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    @company = Company.new
+    render Views::Companies::New.new(company: Company.new)
   end
 
   # GET /companies/1/edit
@@ -28,7 +26,7 @@ class CompaniesController < ApplicationController
     if @company.save
       redirect_to @company, notice: "Company was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render Views::Companies::New.new(company: @company), status: :unprocessable_entity
     end
   end
 
