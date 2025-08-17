@@ -1,8 +1,5 @@
 class Views::Companies::Form < Views::Base
   include Phlex::Rails::Helpers::FormWith
-  include Phlex::Rails::Helpers::Label
-  include Phlex::Rails::Helpers::Pluralize
-  include Phlex::Rails::Helpers::TextField
 
   attr_accessor :company
 

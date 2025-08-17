@@ -6,7 +6,7 @@ linters:
     rubocop_config:
       inherit_from:
       - .rubocop.yml
-      Naming/PredicatePrefix:
+      Naming/PredicateName:
         Enabled: false
       Style/FrozenStringLiteralComment:
         Enabled: false
