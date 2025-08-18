@@ -12,7 +12,10 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    render Views::Companies::New.new(company: Company.new)
+    company = Company.new
+    company.build_address
+
+    render Views::Companies::New.new(company:)
   end
 
   # GET /companies/1/edit
@@ -52,7 +55,22 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.expect(company: [:name, :nif, :industry]).merge(disabled_at:)
+    params
+      .expect(company: [
+        :name, :nif, :industry,
+        address_attributes: [
+          :zip_code,
+          :street_name,
+          :building_number,
+          :absent_number,
+          :district,
+          :city,
+          :state,
+          :complement,
+          :reference
+        ]
+      ])
+      .merge(disabled_at:)
   end
 
   def disabled_at

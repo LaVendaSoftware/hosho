@@ -12,7 +12,7 @@ class Components::Form::TextField < Components::Base
         ta(@resource.class, @attribute)
       end
 
-      Input(id: field_id, name: field_name, value: @resource.send(@attribute))
+      Input(id: field_id, name: field_name, value: field_value)
       FormFieldError { @resource.errors.full_messages_for(@attribute).to_sentence }
     end
   end

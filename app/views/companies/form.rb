@@ -16,6 +16,10 @@ class Views::Companies::Form < Views::Base
 
         Components::Form::CheckboxField(@company, :disabled)
 
+        form.fields_for :address do |f|
+          Components::Form::NestedTextField(@company, :address, :zip_code)
+        end
+
         div(class: "flex gap-2 mt-4") do
           Components::LinkTo::Back(companies_path)
           Button(type: "submit") { "Create company" }

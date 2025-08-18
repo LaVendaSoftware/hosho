@@ -8,4 +8,8 @@ module Components::Form::BaseField
   def field_name
     "#{@resource.class}[#{@attribute}]".underscore
   end
+
+  def field_value
+    @resource.send(@attribute)
+  end
 end
