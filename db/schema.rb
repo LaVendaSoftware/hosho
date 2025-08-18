@@ -21,14 +21,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_102553) do
     t.string "zip_code"
     t.string "street_name"
     t.string "building_number"
-    t.boolean "absent_number", default: false, null: false
     t.string "district"
     t.string "city"
-    t.integer "state"
+    t.string "state"
     t.string "complement"
     t.decimal "latitude"
     t.decimal "longitude"
-    t.text "reference"
+    t.string "reference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
@@ -38,7 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_102553) do
     t.string "pid", default: "", null: false
     t.string "name", null: false
     t.string "nif"
-    t.integer "industry"
+    t.integer "industry", default: 0
     t.datetime "disabled_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

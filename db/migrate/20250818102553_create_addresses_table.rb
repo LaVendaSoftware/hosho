@@ -6,14 +6,13 @@ class CreateAddressesTable < ActiveRecord::Migration[8.0]
       t.string :zip_code
       t.string :street_name
       t.string :building_number
-      t.boolean :absent_number, default: false, null: false
       t.string :district
       t.string :city
-      t.integer :state
+      t.string :state
       t.string :complement
       t.decimal :latitude
       t.decimal :longitude
-      t.text :reference
+      t.string :reference
 
       t.timestamps
     end

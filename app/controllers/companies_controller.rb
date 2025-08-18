@@ -25,6 +25,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   def create
     @company = Company.new(company_params)
+    binding.break
 
     if @company.save
       redirect_to companies_path, notice: t(".success")
@@ -59,10 +60,10 @@ class CompaniesController < ApplicationController
       .expect(company: [
         :name, :nif, :industry,
         address_attributes: [
+          :id,
           :zip_code,
           :street_name,
           :building_number,
-          :absent_number,
           :district,
           :city,
           :state,
@@ -70,10 +71,5 @@ class CompaniesController < ApplicationController
           :reference
         ]
       ])
-      .merge(disabled_at:)
-  end
-
-  def disabled_at
-    Time.current if params.dig(:company, :disabled).present?
   end
 end

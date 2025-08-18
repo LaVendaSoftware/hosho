@@ -3,7 +3,7 @@ class Company < ApplicationRecord
 
   has_one :address, as: :addressable, dependent: :destroy
 
-  accepts_nested_attributes_for :address, reject_if: :all_blank
+  accepts_nested_attributes_for :address
 
   validates :name, presence: true, uniqueness: true
 
