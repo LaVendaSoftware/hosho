@@ -1,0 +1,31 @@
+pt:
+  simple_form:
+    "yes": "Sim"
+    "no": "Não"
+    required:
+      text: "obrigatório"
+      mark: "*"
+      # Pode descomentar a linha abaixo se precisar de sobrescrever o html completo.
+      # Ao usar html, text e mark não serão usados.
+      # html: "<abbr title=\"obrigatório\">*</abbr>"
+    error_notification:
+      default_message: "Por favor reveja os problemas abaixo:"
+    # Exemplos
+    labels:
+      user:
+        username: "Nome de utilizador"
+        password: "Palavra-passe"
+    hints:
+      user:
+        username: "Nome de utilizador para iniciar sessão."
+        password: "Por favor, não utilize caracteres especiais."
+    placeholders:
+      user:
+        username: "O seu nome de utilizador"
+        password: "****"
+    include_blanks:
+      user:
+        age: "Prefiro não dizer"
+    prompts:
+      user:
+        role: "Selecione o seu papel"

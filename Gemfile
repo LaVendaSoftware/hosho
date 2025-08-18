@@ -51,3 +51,5 @@ gem "tailwind_merge", "~> 1.3"
 gem "ulid", "~> 1.4", require: "ulid"
 # https://github.com/LaVendaSoftware/ucasy#basic-usage
 gem "ucasy", "~> 0.3.3"
+
+gem "simple_form", "~> 5.3"
