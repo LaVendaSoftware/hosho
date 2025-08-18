@@ -12,11 +12,7 @@ class Views::Companies::Form < Views::Base
 
         Components::Form::TextField(@company, :nif)
 
-        FormField do
-          FormFieldLabel(for: "company_industry") { "Industry" }
-          Input(id: "company_industry", name: "company[industry]")
-          FormFieldError { @company.errors.full_messages_for(:industry).to_sentence }
-        end
+        Components::Form::EnumSelect(form, :industry)
 
         div(class: "flex gap-2 mt-4") do
           Components::LinkTo::Back(companies_path)
