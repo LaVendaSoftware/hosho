@@ -24,7 +24,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      redirect_to @company, notice: t(".success")
+      redirect_to companies_path, notice: t(".success")
     else
       render Views::Companies::New.new(company: @company), status: :unprocessable_entity
     end
@@ -52,6 +52,10 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.expect(company: [:name, :nif, :industry])
+    params.expect(company: [:name, :nif, :industry]).merge(disabled_at:)
+  end
+
+  def disabled_at
+    Time.current if params.dig(:company, :disabled).present?
   end
 end

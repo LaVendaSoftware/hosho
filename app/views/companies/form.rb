@@ -14,6 +14,8 @@ class Views::Companies::Form < Views::Base
 
         Components::Form::EnumSelect(form, :industry)
 
+        Components::Form::CheckboxField(@company, :disabled)
+
         div(class: "flex gap-2 mt-4") do
           Components::LinkTo::Back(companies_path)
           Button(type: "submit") { "Create company" }
