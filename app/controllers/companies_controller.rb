@@ -25,7 +25,6 @@ class CompaniesController < ApplicationController
   # POST /companies
   def create
     @company = Company.new(company_params)
-    binding.break
 
     if @company.save
       redirect_to companies_path, notice: t(".success")
