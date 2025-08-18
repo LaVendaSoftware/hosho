@@ -7,6 +7,12 @@ import { application } from "./application";
 import HelloController from "./hello_controller";
 application.register("hello", HelloController);
 
+import RubyUi__CheckboxGroupController from "./ruby_ui/checkbox_group_controller";
+application.register(
+  "ruby-ui--checkbox-group",
+  RubyUi__CheckboxGroupController,
+);
+
 import RubyUi__ComboboxController from "./ruby_ui/combobox_controller";
 application.register("ruby-ui--combobox", RubyUi__ComboboxController);
 
