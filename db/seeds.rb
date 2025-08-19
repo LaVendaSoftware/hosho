@@ -10,5 +10,12 @@ ActiveRecord::Base.transaction do
   Company.food.create!(name: "Bean & Brew Café", nif: "456123789").create_address
   Company.automotive.create!(name: "AutoDrive Dealership", nif: "789321456").create_address
 
+  puts "* Create dev user"
+  User.developer.create!(email_address: "walmir@hosho.tech", password: "walmir@hosho.tech")
+
+  puts "* Create admin users"
+  User.admin.create!(email_address: "alexandre@hosho.tech", password: "alexandre@hosho.tech")
+  User.admin.create!(email_address: "caio@hosho.tech", password: "caio@hosho.tech")
+
   puts "✅ Seed finished successfully"
 end
