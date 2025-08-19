@@ -1,16 +1,13 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update destroy]
 
-  # GET /companies
   def index
     render Views::Companies::Index.new(companies: Company.all)
   end
 
-  # GET /companies/1
   def show
   end
 
-  # GET /companies/new
   def new
     company = Company.new
     company.build_address
@@ -18,12 +15,10 @@ class CompaniesController < ApplicationController
     render Views::Companies::New.new(company:)
   end
 
-  # GET /companies/1/edit
   def edit
     render Views::Companies::Edit.new(company: @company)
   end
 
-  # POST /companies
   def create
     @company = Company.new(company_params)
 
@@ -34,7 +29,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /companies/1
   def update
     if @company.update(company_params)
       redirect_to @company, notice: t(".success"), status: :see_other
@@ -43,7 +37,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  # DELETE /companies/1
   def destroy
     @company.destroy!
     redirect_to companies_path, notice: t(".success"), status: :see_other
