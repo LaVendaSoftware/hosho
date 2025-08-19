@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_19_133251) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_19_135902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -45,6 +45,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_19_133251) do
     t.index ["pid"], name: "index_companies_on_pid", unique: true
   end
 
+  create_table "companies_users", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_companies_users_on_company_id"
+    t.index ["user_id"], name: "index_companies_users_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "ip_address"
@@ -66,5 +75,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_19_133251) do
     t.index ["pid"], name: "index_users_on_pid", unique: true
   end
 
+  add_foreign_key "companies_users", "companies"
+  add_foreign_key "companies_users", "users"
   add_foreign_key "sessions", "users"
 end

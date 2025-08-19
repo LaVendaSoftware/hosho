@@ -4,7 +4,7 @@ ActiveRecord::Base.transaction do
   puts "🚀 Seed started..."
 
   puts "* Create companies"
-  Company.other.create!(name: "Some company", nif: "567812349").create_address
+  some_company = Company.other.create!(name: "Some company", nif: "567812349").create_address
   Company.tourism.create!(name: "Sun & Sea Tours", nif: "123456789").create_address
   Company.commerce.create!(name: "HomeStyle Furniture", nif: "987654321").create_address
   Company.food.create!(name: "Bean & Brew Café", nif: "456123789").create_address
@@ -16,6 +16,10 @@ ActiveRecord::Base.transaction do
   puts "* Create admin users"
   User.admin.create!(email_address: "alexandre@hosho.tech", password: "alexandre@hosho.tech")
   User.admin.create!(email_address: "caio@hosho.tech", password: "caio@hosho.tech")
+
+  puts "* Create manager users"
+  manager = User.manager.create!(email_address: "some@company.com", password: "some@company.com")
+  manager.company_users.create!(company: some_company)
 
   puts "✅ Seed finished successfully"
 end

@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_secure_password
   has_many :sessions, dependent: :destroy
+  has_many :company_users, dependent: :destroy
+  has_many :companies, through: :company_users
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
