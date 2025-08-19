@@ -60,16 +60,14 @@ jobs:
       - name: ⏬️ Checkout code
         uses: actions/checkout@v5
 
-      - name: 📦 Set up Bun
-        uses: oven-sh/setup-bun@v2
+      - name: 📦 Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: "22"
+          cache: "yarn"
 
-      - name: 🍞 Verify bun version
-        run: bun --version
-
-      - name: 🍞 Install dependencies
-        run: bun install
+      - name: 📦 Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: 🧪 Run Biome Linter
         run: bin/biome
