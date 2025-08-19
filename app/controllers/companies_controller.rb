@@ -20,6 +20,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+    render Views::Companies::Edit.new(company: @company)
   end
 
   # POST /companies
@@ -27,7 +28,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      redirect_to companies_path, notice: t(".success")
+      redirect_to @company, notice: t(".success")
     else
       render Views::Companies::New.new(company: @company), status: :unprocessable_entity
     end
@@ -38,7 +39,7 @@ class CompaniesController < ApplicationController
     if @company.update(company_params)
       redirect_to @company, notice: t(".success"), status: :see_other
     else
-      render :edit, status: :unprocessable_entity
+      render Views::Companies::Edit.new(company: @company), status: :unprocessable_entity
     end
   end
 

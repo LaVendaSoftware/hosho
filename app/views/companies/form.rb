@@ -19,13 +19,14 @@ class Views::Companies::Form < Views::Base
         form.fields_for :address do |f|
           f.hidden_field(:id)
 
-          Components::Form::Input(f, :zip_code)
-          Components::Form::Input(f, :street_name)
-          Components::Form::Input(f, :building_number)
-          Components::Form::Input(f, :district)
-          Components::Form::Input(f, :city)
-          Components::Form::Input(f, :state)
-          Components::Form::Input(f, :complement)
+          div(class: "grid grid-cols-3 gap-4") do
+            Components::Form::Input(f, :zip_code)
+            Components::Form::Input(f, :street_name)
+            Components::Form::Input(f, :building_number)
+            Components::Form::Input(f, :district)
+            Components::Form::Input(f, :city)
+            Components::Form::Input(f, :state)
+          end
           Components::Form::Input(f, :reference)
         end
 
