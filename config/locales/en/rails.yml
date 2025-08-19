@@ -1,0 +1,6 @@
+en:
+  true: "Yes"
+  false: "No"
+  nil: "Empty"
+  enum_select:
+    prompt: "Select an option..."

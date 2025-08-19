@@ -1,28 +1,51 @@
 class Views::Companies::Index < Views::Base
-  include Phlex::Rails::Helpers::ContentFor
-  include Phlex::Rails::Helpers::LinkTo
-  include Phlex::Rails::Helpers::Routes
-
-  def initialize(companies:, notice:)
+  def initialize(companies:)
     @companies = companies
-    @notice = notice
   end
 
   def view_template
-    p(style: "color:#008000") { @notice }
-
-    content_for :title, "Companies"
-
-    h1 { "Companies" }
-
-    div(id: "companies") do
-      @companies.each do |company|
-        render(Views::Companies::Company.new(company:))
-
-        p { link_to "Show this company", company }
-      end
+    div(class: "flex mb-4") do
+      div(class: "flex-1") { Components::Page::Title(title: "Companies") }
+      Components::LinkTo::New("New company", new_company_path)
     end
 
-    link_to "New company", new_company_path
+    return render(Components::Flashes::Warning.new(message: "Companies not found")) unless @companies.exists?
+
+    div(id: "companies") do
+      Table do
+        TableCaption { "Companies" }
+        TableHeader do
+          TableRow do
+            TableHead { "Name" }
+            TableHead { "NIF" }
+            TableHead { "Industry" }
+            TableHead { "Disabled?" }
+            TableHead(class: "text-right") { "Role" }
+          end
+        end
+
+        TableBody do
+          @companies.each do |company|
+            TableRow do
+              TableCell(class: "font-medium") { company.name }
+              TableCell { company.nif }
+              TableCell { company.industry }
+              TableCell { Components::Boolean::String(company.disabled?) }
+              TableCell(class: "text-right") do
+                Components::LinkTo::Edit(edit_company_path(company))
+                # Components::LinkTo::Destroy(company_path(company))
+              end
+            end
+          end
+        end
+
+        # TableFooter do
+        #   TableRow do
+        #     TableHead(class: "font-medium", colspan: 3) { "Total" }
+        #     TableHead(class: "font-medium text-right") { @companies.size }
+        #   end
+        # end
+      end
+    end
   end
 end

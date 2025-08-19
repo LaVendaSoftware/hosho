@@ -8,7 +8,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield(:head)%>
+    <%= yield(:head) %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
@@ -29,6 +29,9 @@
       <%= render(Components::Sidebar::Sidebar.new) %>
 
       <main class="flex-1 p-8">
+        <%= render(Components::Flashes::Success.new(message: flash[:notice])) %>
+        <%= render(Components::Flashes::Error.new(message: flash[:alert])) %>
+
         <%= yield %>
       </main>
     </div>

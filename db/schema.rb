@@ -10,15 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_13_121907) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_18_102553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "nif"
-    t.integer "industry"
+  create_table "addresses", force: :cascade do |t|
+    t.string "addressable_type", null: false
+    t.bigint "addressable_id", null: false
+    t.string "country", default: "PT"
+    t.string "zip_code"
+    t.string "street_name"
+    t.string "building_number"
+    t.string "district"
+    t.string "city"
+    t.string "state"
+    t.string "complement"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.string "reference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "pid", default: "", null: false
+    t.string "name", null: false
+    t.string "nif"
+    t.integer "industry", default: 0
+    t.datetime "disabled_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_companies_on_name", unique: true
+    t.index ["pid"], name: "index_companies_on_pid", unique: true
   end
 end

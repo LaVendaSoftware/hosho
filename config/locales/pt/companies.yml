@@ -1,0 +1,28 @@
+pt:
+  activerecord:
+    models:
+      company:
+        one: "Empresa"
+        zero: "Empresas"
+        other: "Empresas"
+    attributes:
+      company:
+        name: "Nome"
+        nif: "NIF" # Número de Identificação Fiscal
+        industry: "Industria"
+        disabled: "Desativado?"
+        disabled_at: "Desativado em"
+      company/industries:
+        other: "Outro"
+        tourism: "Turismo e Hospitalidade"
+        commerce: "Varejo e Comércio"
+        food: "Alimentação e Bebidas"
+        automotive: "Automotivo"
+
+  companies:
+    create:
+      success: "Empresa foi criado com sucesso."
+    update:
+      success: "Empresa foi atualizado com sucesso."
+    destroy:
+      success: "Empresa foi apagado com sucesso."

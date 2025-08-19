@@ -45,3 +45,8 @@ bun.lockb
 # Kamal
 /.kamal/secrets*
 !/.kamal/secrets.example
+
+# Craby
+.rspec_status
+/coverage/*
+!/coverage/.keep
