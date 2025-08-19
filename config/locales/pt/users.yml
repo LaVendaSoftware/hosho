@@ -1,0 +1,41 @@
+pt:
+  activerecord:
+    models:
+      user:
+        one: "Usuário"
+        zero: "Usuários"
+        other: "Usuários"
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        role: "Papel"
+        disabled: "Desativado?"
+        disabled_at: "Desativado em"
+      user/roles:
+        buyer: "Comprador"
+        seller: "Vendedor"
+        manager: "Gerente"
+        admin: "Administrador"
+        developer: "Developer"
+
+  users:
+    update:
+      success:  "Um e-mail com instruções para confirmação da sua conta foi enviado para você"
+
+  sessions:
+    try_again_later: "Tente novamente mais tarde.."
+    create:
+      error:  "Tente outro endereço de e-mail ou senha."
+
+  passwords:
+    user_not_found: "O link para redefinição de senha é inválido ou expirou."
+    create:
+      success: "As instruções para redefinir a senha foram enviadas (caso exista um usuário com esse e-mail)."
+    update:
+      success: "A senha foi redefinida com sucesso."
+      error: "As senhas não coincidem."
+
+  passwords_mailer:
+    reset:
+      subject: "Resetar sua senha"

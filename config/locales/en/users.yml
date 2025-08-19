@@ -1,0 +1,36 @@
+pt:
+  activerecord:
+    models:
+      user:
+        one: "User"
+        zero: "Users"
+        other: "Users"
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Password"
+        role: "Role"
+        disabled_at: "Disabled At"
+      user/roles:
+        buyer: "Buyer"
+        seller: "Seller"
+        manager: "Manager"
+        admin: "Admin"
+        developer: "Developer"
+
+  sessions:
+    try_again_later: "Try again later."
+    create:
+      error:  "Try another email address or password."
+
+  passwords:
+    user_not_found: "Password reset link is invalid or has expired."
+    create:
+      success: "Password reset instructions sent (if user with that email address exists)."
+    update:
+      success: "Password has been reset."
+      error: "Passwords did not match."
+
+  passwords_mailer:
+    reset:
+      subject: "Reset your password"
