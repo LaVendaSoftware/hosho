@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 # Use main development branch of Rails
 gem "rails", github: "rails/rails", branch: "main"
+# https://github.com/svenfuchs/rails-i18n#configuration
+gem "rails-i18n", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
