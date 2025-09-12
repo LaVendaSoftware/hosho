@@ -1,0 +1,11 @@
+<div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+  <%%= render(UI::PageTitle::Form.new(record: <%= singular_name %>, back_url: <%= controller_name %>_path)) %>
+
+  <%%= simple_form_for(<%= singular_name %>) do |form| %>
+    <%- attributes.each do |attribute| -%>
+    <%%= form.<%= attribute.reference? ? :association : :input %>(:<%= attribute.name %>) %>
+    <%- end -%>
+
+    <%%= render(UI::Form::Actions.new(record: <%= singular_name %>, back_url: <%= controller_name %>_path)) %>
+  <%% end %>
+</div>
