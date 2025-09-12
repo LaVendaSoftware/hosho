@@ -37,6 +37,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  # https://rubyui.com/docs/introduction
+  gem "ruby_ui", "~> 1.0", require: false
   # https://github.com/railsjazz/rails_live_reload#usage
   gem "rails_live_reload", "~> 0.5.0"
 end
@@ -49,3 +51,7 @@ gem "devise-i18n", "~> 1.15"
 gem "ulid", "~> 1.4", require: "ulid"
 # https://github.com/LaVendaSoftware/ucasy#basic-usage
 gem "ucasy", "~> 0.3.3"
+# https://www.phlex.fun/introduction
+gem "phlex-rails", "~> 2.3"
+# https://github.com/gjtorikian/tailwind_merge?tab=readme-ov-file#usage
+gem "tailwind_merge", "~> 1.3"
