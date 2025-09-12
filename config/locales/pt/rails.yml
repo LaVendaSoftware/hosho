@@ -1,0 +1,9 @@
+pt:
+  true: "Sim"
+  false: "Não"
+  nil: "Vazio"
+  form:
+    button:
+      create: "Create %{model}"
+      update: "Update %{model}"
+      save: "Save %{model}"
