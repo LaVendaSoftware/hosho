@@ -38,3 +38,8 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
+
+# https://github.com/heartcombo/devise#getting-started
+gem "devise", "~> 4.9"
+# https://github.com/tigrish/devise-i18n#customizing-views
+gem "devise-i18n", "~> 1.15"
