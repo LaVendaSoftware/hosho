@@ -2,11 +2,15 @@
   "name": "app",
   "private": true,
   "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
     "esbuild": "^0.25.9"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "npx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build:css": "npx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "lint": "biome lint app/javascript",
+    "format": "biome format app/javascript",
+    "check": "biome check app/javascript"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
