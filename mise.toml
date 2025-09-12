@@ -1,4 +1,3 @@
 [tools]
 node = "24.7.0"
-postgres = "17.6"
 ruby = "3.4.5"
