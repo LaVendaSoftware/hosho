@@ -1,0 +1,17 @@
+pt:
+  activerecord:
+    models:
+      user:
+        one: "User"
+        zero: "Users"
+        other: "Users"
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Password"
+        role: "Role"
+        disabled_at: "Disabled At"
+      user/roles:
+        standard: "Standard"
+        admin: "Admin"
+        developer: "Developer"

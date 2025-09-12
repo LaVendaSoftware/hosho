@@ -1,0 +1,18 @@
+pt:
+  activerecord:
+    models:
+      user:
+        one: "Usuário"
+        zero: "Usuários"
+        other: "Usuários"
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        role: "Papel"
+        disabled: "Desativado?"
+        disabled_at: "Desativado em"
+      user/roles:
+        standard: "Padrão"
+        admin: "Administrador"
+        developer: "Developer"
