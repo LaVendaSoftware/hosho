@@ -281,6 +281,8 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
+    ox (2.14.23)
+      bigdecimal (>= 3.0)
     parallel (1.27.0)
     parser (3.3.9.0)
       ast (~> 2.4.1)
@@ -297,6 +299,10 @@ GEM
       phlex (~> 2.3.0)
       railties (>= 7.1, < 9)
       zeitwerk (~> 2.7)
+    phosphor_icons (0.3.0)
+      actionview
+      ox (~> 2.14)
+      railties
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -521,6 +527,7 @@ DEPENDENCIES
   kamal
   pg (~> 1.6, >= 1.6.2)
   phlex-rails (~> 2.3)
+  phosphor_icons (~> 0.3.0)
   propshaft
   puma (~> 7.0, >= 7.0.2)
   rails!

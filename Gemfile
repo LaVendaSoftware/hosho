@@ -55,3 +55,5 @@ gem "ucasy", "~> 0.3.3"
 gem "phlex-rails", "~> 2.3"
 # https://github.com/gjtorikian/tailwind_merge?tab=readme-ov-file#usage
 gem "tailwind_merge", "~> 1.3"
+# https://github.com/maful/ruby-phosphor-icons#usage
+gem "phosphor_icons", "~> 0.3.0"
