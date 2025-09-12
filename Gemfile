@@ -45,3 +45,5 @@ end
 gem "devise", "~> 4.9"
 # https://github.com/tigrish/devise-i18n#customizing-views
 gem "devise-i18n", "~> 1.15"
+# https://github.com/abachman/ulid-ruby#installation
+gem "ulid", "~> 1.4", require: "ulid"
