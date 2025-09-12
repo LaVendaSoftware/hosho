@@ -1,0 +1,6 @@
+pt:
+  devise:
+    sessions:
+      new:
+        title: "Authentication"
+        subtitle: "Enter your email & password below to login"

@@ -1,26 +1,26 @@
-<h2>Log in</h2>
+<div data-slot="card-header" class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6">
+  <div data-slot="card-title" class="leading-none font-semibold">
+    <%= t(".title") %>
+  </div>
+  <div data-slot="card-description" class="text-muted-foreground text-sm">
+    <%= t(".subtitle") %>
+  </div>
+</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div data-slot="card-content" class="px-6">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
+    <div class="flex flex-col gap-6">
+      <%= render(Components::Form::EmailField.new(form, :email)) %>
+
+      <%= render(Components::Form::PasswordField.new(form, :password)) %>
+
+      <%= render(Components::Form::SubmitButton.new(form, label: "Login")) %>
+
+      <%# <div class="mt-4 text-center text-sm">
+        Don't have an account?
+        <a href="#" class="underline underline-offset-4">Sign up</a>
+      </div> %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%#= render "devise/shared/links" %>

@@ -1,0 +1,6 @@
+pt:
+  devise:
+    sessions:
+      new:
+        title: "Autenticação"
+        subtitle: "Digite seu email & senha abaixo para logar"
