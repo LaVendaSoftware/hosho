@@ -37,6 +37,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  # https://github.com/railsjazz/rails_live_reload#usage
+  gem "rails_live_reload", "~> 0.5.0"
 end
 
 # https://github.com/heartcombo/devise#getting-started
