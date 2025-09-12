@@ -7,7 +7,7 @@ pt:
         other: "Usuários"
     attributes:
       user:
-        email: "E-mail"
+        email_address: "E-mail"
         password: "Senha"
         role: "Papel"
         disabled: "Desativado?"

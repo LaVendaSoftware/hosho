@@ -4,3 +4,11 @@ en:
   nil: "Empty"
   enum_select:
     prompt: "Select an option..."
+  alerts:
+    warning:
+      subtitle: "Warning!"
+    success:
+      subtitle: "Success!"
+    not_found:
+      male: "%{model} not found."
+      female: "%{model} not found."

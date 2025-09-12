@@ -4,3 +4,11 @@ pt:
   nil: "Vazio"
   enum_select:
     prompt: "Selecione uma opção..."
+  alerts:
+    warning:
+      subtitle: "Atenção!"
+    success:
+      subtitle: "Sucesso!"
+    not_found:
+      male: "Nenhum %{model} foi encontrado."
+      female: "Nenhuma %{model} foi encontrada."
