@@ -1,4 +1,5 @@
 pt:
+  hey: "Olá 👋"
   true: "Sim"
   false: "Não"
   nil: "Vazio"
