@@ -7,9 +7,11 @@ pt:
         other: "Users"
     attributes:
       user:
+        name: "Nome"
         email: "E-mail"
         password: "Password"
         role: "Role"
+        disabled: "Disabled?"
         disabled_at: "Disabled At"
       user/roles:
         standard: "Standard"

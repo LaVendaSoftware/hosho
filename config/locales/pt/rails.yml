@@ -4,6 +4,13 @@ pt:
   nil: "Vazio"
   form:
     button:
-      create: "Create %{model}"
-      update: "Update %{model}"
-      save: "Save %{model}"
+      create: "Criar %{model}"
+      update: "Atualizar %{model}"
+      save: "Salvar %{model}"
+  alerts:
+    create:
+      success: "Registro criado com sucesso."
+    update:
+      success: "Registro atualizado com sucesso."
+    destroy:
+      success: "Registro apagado com sucesso."

@@ -4,6 +4,13 @@ en:
   nil: "Empty"
   form:
     submit:
-      create: "Criar %{model}"
-      update: "Atualizar %{model}"
-      save: "Salvar %{model}"
+      create: "Create %{model}"
+      update: "Update %{model}"
+      save: "Save %{model}"
+  alerts:
+    create:
+      success: "Record created successfully."
+    update:
+      success: "Record updated successfully."
+    destroy:
+      success: "Record destroyed successfully."
