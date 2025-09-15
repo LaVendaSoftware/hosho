@@ -1,0 +1,10 @@
+<div id="<%%= dom_id(<%= singular_name %>) %>">
+  <%%= render(Components::Page::Details.new(
+        record: <%= singular_name %>,
+        columns: [
+          <%- attributes.reject(&:password_digest?).each do |attribute| -%>
+          :<%= attribute.name %><%= "_id" if attribute.reference? %>,
+          <%- end -%>
+        ]
+      )) %>
+</div>

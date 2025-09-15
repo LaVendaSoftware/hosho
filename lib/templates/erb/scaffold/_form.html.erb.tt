@@ -1,0 +1,15 @@
+<%= render(Components::PageTitle::Form.new(record: <%= singular_name %>, back_url: <%= controller_name %>_path)) %>
+
+<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
+  <%%= form_for(<%= singular_name %>) do |form| %>
+    <%- attributes.each do |attribute| -%>
+    <%- if attribute.reference? -%>
+    <%%= render(Components::Form::Association.new(form, :<%= attribute.name %>)) %>
+    <%- else -%>
+    <%%= render(Components::Form::TextField.new(form, :<%= attribute.name %>)) %>
+    <%- end -%>
+    <%- end -%>
+
+    <%%= render(Components::Form::SubmitButton.new(form)) %>
+  <%% end %>
+</div>
