@@ -1,11 +1,11 @@
 <%%= render(Components::PageTitle::Index.new(model: <%= singular_name.classify %>, link: new_<%= singular_name%>_path, icon: nil)) %>
 
-<div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
   <%% if @<%= plural_name %>.blank? %>
     <%%= render(Components::Alerts::NotFound::Male.new(model: <%= singular_name.classify %>)) %>
     <%%#= render(Components::Alerts::NotFound::Female.new(model: <%= singular_name.classify %>)) %>
   <%% else %>
-    <%%= render(Components::Table::Table.new(
+    <%%= render(Components::Table::List.new(
           records: @<%= plural_name %>,
           heads: [
             <%- attributes.each do |attribute| -%>
