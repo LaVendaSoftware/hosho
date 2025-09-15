@@ -20,7 +20,7 @@ class Components::Sidebar::Link < Components::Base
         class: link_classes,
         data_state: "closed"
       ) do
-        Components::Icon(@icon) if @icon.present?
+        Components::Icon(@icon)
 
         span { @label }
       end

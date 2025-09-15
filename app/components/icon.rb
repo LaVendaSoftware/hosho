@@ -4,6 +4,8 @@ class Components::Icon < Components::Base
   end
 
   def view_template
+    return if @icon.blank?
+
     i { ApplicationController.helpers.phosphor_icon(@icon) }
   end
 end

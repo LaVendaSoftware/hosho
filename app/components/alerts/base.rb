@@ -8,7 +8,7 @@ class Components::Alerts::Base < Components::Base
     return if @message.blank?
 
     Alert(variant:, class: "flex gap-3") do
-      render(Components::Icon.new(icon)) if icon.present?
+      render(Components::Icon.new(icon))
 
       div do
         AlertTitle { @title } if @title.present?
