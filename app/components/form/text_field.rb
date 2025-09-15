@@ -6,20 +6,27 @@ class Components::Form::TextField < Components::Base
   end
 
   def view_template
-    div(class: "grid gap-3") do
-      @form.input(@attribute, input_html: {class: input_classes})
-      # span { @form.label(@attribute, class: label_classes) }
-      # span { @form.text_field(@attribute, class: input_classes, **@options) }
+    div(class: "grid mb-4") do
+      span { @form.label(@attribute, class: label_classes) }
+      span { input }
+
+      if @form.object.errors.messages[@attribute].present?
+        span(class: "text-red-500 italic") { @form.object.errors.full_messages_for(@attribute).to_sentence }
+      end
     end
   end
 
   private
 
+  def input
+    @form.text_field(@attribute, class: input_classes, **@options)
+  end
+
   def label_classes
     [
       "flex items-center gap-2 text-sm leading-none font-medium select-none ",
       "group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 ",
-      "peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
+      "peer-disabled:cursor-not-allowed peer-disabled:opacity-50 mb-2"
     ].join
   end
 
