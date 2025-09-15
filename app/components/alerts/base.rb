@@ -1,5 +1,5 @@
 class Components::Alerts::Base < Components::Base
-  def initialize(message: nil, title: nil)
+  def initialize(message:, title: nil)
     @message = message
     @title = title
   end
@@ -7,7 +7,7 @@ class Components::Alerts::Base < Components::Base
   def view_template
     return if @message.blank?
 
-    Alert(variant:, class: "flex gap-3") do
+    Alert(variant:, class: "flex gap-3 items-center") do
       render(Components::Icon.new(icon))
 
       div do
