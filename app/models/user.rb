@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include PIDable
+  include Humanizable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :registerable, :trackable and :omniauthable
@@ -14,4 +15,8 @@ class User < ApplicationRecord
 
   def disabled? = disabled_at.present?
   alias_method :disabled, :disabled?
+
+  def humanized_role
+    human_enum_singular_name(:role)
+  end
 end

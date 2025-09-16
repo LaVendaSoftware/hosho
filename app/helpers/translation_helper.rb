@@ -94,9 +94,9 @@ module TranslationHelper
   #   # => "Artigos"
   #
   # Returns translated model's enum names.
-  def translate_model_enum_names(model, enum)
-    model.send(enum).keys.map do |key|
-      [model.human_attribute_name("#{enum}.#{key}"), key]
+  def translate_model_enum_names(model, enum, except: [])
+    model.send(enum).keys.filter_map do |key|
+      [model.human_attribute_name("#{enum}.#{key}"), key] if except.exclude?(key.to_sym)
     end
   end
   alias_method :teo, :translate_model_enum_names

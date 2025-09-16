@@ -48,6 +48,7 @@
                   <div data-slot="sidebar-group-content" data-sidebar="group-content" class="w-full text-sm flex flex-col gap-2">
                     <%= render(Components::Sidebar::Sidebar.new) do %>
                       <%= render(Components::Sidebar::Link.new(root_path, "Home", "house")) %>
+                      <%= render(Components::Sidebar::Link.new(users_path, tmp(User), "users")) %>
                     <% end %>
                   </div>
                 </div>

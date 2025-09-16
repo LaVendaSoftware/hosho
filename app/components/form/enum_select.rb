@@ -1,8 +1,9 @@
 class Components::Form::EnumSelect < Components::Base
-  def initialize(form, attribute, collection: [], **options)
+  def initialize(form, attribute, collection: [], except: [], **options)
     @form = form
     @attribute = attribute
     @collection = collection
+    @except = except
     @options = options
   end
 
@@ -15,6 +16,6 @@ class Components::Form::EnumSelect < Components::Base
   def collection
     return @collection if @collection.present?
 
-    h.teo(@form.object.class, @attribute.to_s.pluralize)
+    h.teo(@form.object.class, @attribute.to_s.pluralize, except: @except)
   end
 end

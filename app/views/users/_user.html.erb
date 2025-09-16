@@ -1,0 +1,10 @@
+<div id="<%= dom_id(user) %>">
+  <%= render(Components::Page::Show.new(
+        record: user,
+        columns: [
+          :name,
+          :email,
+          :humanized_role
+        ]
+      )) %>
+</div>
