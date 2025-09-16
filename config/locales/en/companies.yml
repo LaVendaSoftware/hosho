@@ -1,0 +1,28 @@
+en:
+  activerecord:
+    models:
+      company:
+        one: "Company"
+        zero: "Companies"
+        other: "Companies"
+    attributes:
+      company:
+        name: "Name"
+        nif: "NIF"
+        industry: "Industry"
+        disabled: "Disabled?"
+        disabled_at: "Disabled at"
+      company/industries:
+        other: "Other"
+        tourism: "Travel & Hospitality"
+        commerce: "Retail & Commerce"
+        food: "Food & Beverage"
+        automotive: "Automotive"
+
+  companies:
+    create:
+      success: "Company was successfully created."
+    update:
+      success: "Company was successfully updated."
+    destroy:
+      success: "Company was successfully destroyed."

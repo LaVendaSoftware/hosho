@@ -1,0 +1,14 @@
+<%= render(Components::PageTitle::Form.new(record: company, back_url: companies_path)) %>
+
+<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
+  <%= form_for(company) do |form| %>
+    <%= render(Components::Form::TextField.new(form, :name)) %>
+
+    <div class="grid grid-cols-2 gap-4">
+      <%= render(Components::Form::TextField.new(form, :nif)) %>
+      <%= render(Components::Form::EnumSelect.new(form, :industry)) %>
+    </div>
+
+    <%= render(Components::Form::SubmitButton.new(form)) %>
+  <% end %>
+</div>
