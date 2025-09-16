@@ -14,3 +14,13 @@ en:
       success: "Record updated successfully."
     destroy:
       success: "Record destroyed successfully."
+  activerecord:
+    attributes:
+      created_at: "Created at"
+      updated_at: "Updated at"
+  time:
+    formats:
+      custom: "%b %d, %Y, %I:%M:%S %p"
+    distances:
+      past: "%{time} ago"
+      future: "In %{time}"
