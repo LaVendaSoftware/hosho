@@ -3,7 +3,7 @@ en:
   false: "No"
   nil: "Empty"
   form:
-    submit:
+    button:
       create: "Create %{model}"
       update: "Update %{model}"
       save: "Save %{model}"

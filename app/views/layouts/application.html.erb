@@ -49,6 +49,7 @@
                     <%= render(Components::Sidebar::Sidebar.new) do %>
                       <%= render(Components::Sidebar::Link.new(root_path, "Home", "house")) %>
                       <%= render(Components::Sidebar::Link.new(users_path, tmp(User), "users")) %>
+                      <%= render(Components::Sidebar::Link.new(companies_path, tmp(Company), "building-office")) %>
                     <% end %>
                   </div>
                 </div>

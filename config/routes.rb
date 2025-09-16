@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   root "home#page"
 
   resources :users, except: :destroy
+  resources :companies, except: :destroy
 end
