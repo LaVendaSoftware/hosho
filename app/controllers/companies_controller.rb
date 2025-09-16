@@ -36,7 +36,7 @@ class CompaniesController < ApplicationController
   private
 
   def repo
-    @repo ||= ApplicationRepo.new(Company)
+    @repo ||= CompanyRepo.new(Company)
   end
 
   def set_company
@@ -44,6 +44,20 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.expect(company: [:pid, :name, :nif, :industry, :disabled_at])
+    params
+      .expect(company: [
+        :name, :nif, :industry,
+        address_attributes: [
+          :id,
+          :zip_code,
+          :street_name,
+          :building_number,
+          :district,
+          :city,
+          :state,
+          :complement,
+          :reference
+        ]
+      ])
   end
 end

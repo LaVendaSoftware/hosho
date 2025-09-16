@@ -1,0 +1,20 @@
+en:
+  activerecord:
+    models:
+      address:
+        one: "Address"
+        zero: "Addresses"
+        other: "Addresses"
+    attributes:
+      address:
+        country: "Country"
+        zip_code: "Zip code"
+        street_name: "Street name"
+        building_number: "Building number"
+        district: "District"
+        city: "City"
+        state: "State"
+        complement: "Complement"
+        latitude: "Latitude"
+        longitude: "Longitude"
+        reference: "Reference"
