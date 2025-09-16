@@ -9,7 +9,7 @@ gem "propshaft"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.6", ">= 1.6.2"
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 7.0", ">= 7.0.2"
+gem "puma", "~> 7.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]

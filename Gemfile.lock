@@ -315,7 +315,7 @@ GEM
       date
       stringio
     public_suffix (6.0.2)
-    puma (7.0.2)
+    puma (7.0.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.1)
@@ -529,7 +529,7 @@ DEPENDENCIES
   phlex-rails (~> 2.3)
   phosphor_icons (~> 0.3.0)
   propshaft
-  puma (~> 7.0, >= 7.0.2)
+  puma (~> 7.0)
   rails!
   rails-i18n (~> 8.0.1)
   rails_live_reload (~> 0.5.0)
