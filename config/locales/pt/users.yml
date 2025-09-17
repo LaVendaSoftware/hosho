@@ -13,6 +13,8 @@ pt:
         role: "Papel"
         disabled: "Desativado?"
         disabled_at: "Desativado em"
+        companies: "Empresa"
+        company_ids: "Empresa"
       user/roles:
         standard: "Comprador"
         seller: "Vendedor"

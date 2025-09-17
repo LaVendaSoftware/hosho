@@ -6,6 +6,7 @@
     <%= render(Components::Form::EmailField.new(form, :email_address)) %>
     <%= render(Components::Form::PasswordField.new(form, :password)) if user.new_record? %>
     <%= render(Components::Form::EnumSelect.new(form, :role, except: [:standard, :developer])) %>
+    <%= render(Components::Form::HasManyField.new(form, :company_ids, collection: Company.pluck(:name, :id))) %>
 
     <%= render(Components::Form::SubmitButton.new(form)) %>
   <% end %>

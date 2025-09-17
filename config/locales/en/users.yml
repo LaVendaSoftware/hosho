@@ -12,6 +12,8 @@ en:
         password: "Password"
         role: "Role"
         disabled_at: "Disabled At"
+        companies: "Company"
+        company_ids: "Company"
       user/roles:
         standard: "Buyer"
         seller: "Seller"

@@ -15,10 +15,20 @@ class User < ApplicationRecord
   validates :email_address, presence: true
   validates :role, inclusion: {in: User.roles.keys}
 
+  validate :must_have_company_if_staff
+
   def humanized_role
     human_enum_singular_name(:role)
   end
 
   def disabled? = disabled_at.present?
   alias_method :disabled, :disabled?
+
+  private
+
+  def must_have_company_if_staff
+    return unless manager? || seller?
+
+    errors.add(:company_ids, :blank) if companies.blank?
+  end
 end
