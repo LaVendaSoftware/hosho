@@ -1,5 +1,5 @@
-import { autoUpdate, computePosition, flip, offset } from "@floating-ui/dom";
 import { Controller } from "@hotwired/stimulus";
+import { computePosition, autoUpdate, offset, flip } from "@floating-ui/dom";
 
 export default class extends Controller {
   static targets = ["trigger", "content", "input", "value", "item"];
@@ -23,7 +23,6 @@ export default class extends Controller {
   selectItem(event) {
     event.preventDefault();
 
-    // biome-ignore lint/suspicious/useIterableCallbackReturn: auto generated code
     this.rubyUiSelectItemOutlets.forEach((item) =>
       item.handleSelectItem(event),
     );
@@ -102,7 +101,6 @@ export default class extends Controller {
   }
 
   resetCurrent() {
-    // biome-ignore lint/suspicious/useIterableCallbackReturn: auto generated code
     this.itemTargets.forEach((item) => item.removeAttribute("aria-current"));
   }
 
