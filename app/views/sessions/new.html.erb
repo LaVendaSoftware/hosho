@@ -8,7 +8,7 @@
 </div>
 
 <div data-slot="card-content" class="px-6">
-  <%= simple_form_for(@user, url: session_url, class: "contents") do |form| %>
+  <%= form_for(@user, url: session_url, class: "contents") do |form| %>
     <div class="flex flex-col">
       <%= render(Components::Form::EmailField.new(form, :email_address)) %>
 
