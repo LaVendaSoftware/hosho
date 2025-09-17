@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   def create
     user = User.where(disabled_at: nil).authenticate_by(session_params)
 
-    if user
+    if user.present?
       start_new_session_for(user)
       redirect_to(after_authentication_url)
     else
