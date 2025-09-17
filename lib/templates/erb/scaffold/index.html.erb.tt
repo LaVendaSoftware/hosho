@@ -7,18 +7,18 @@
   <%% else %>
   <%%= render(Components::Table::Root.new(
           records: @<%= plural_name %>,
-  heads: [
-  <%- attributes.each do |attribute| -%>
-    ta(<%= singular_name.classify %>, :<%= attribute.name %>),
-  <%- end -%>
-  ],
-  columns: [
-  <%- attributes.each do |attribute| -%>
-    :<%= attribute.name %><%= "_id" if attribute.reference? %>,
-  <%- end -%>
-  ],
-  actions: [:link_to_edit, :link_to_show, :link_to_destroy]
-  )) %>
+          heads: [
+          <%- attributes.each do |attribute| -%>
+            ta(<%= singular_name.classify %>, :<%= attribute.name %>),
+          <%- end -%>
+          ],
+          columns: [
+          <%- attributes.each do |attribute| -%>
+            :<%= attribute.name %><%= "_id" if attribute.reference? %>,
+          <%- end -%>
+          ],
+          actions: [:link_to_edit, :link_to_show, :link_to_destroy]
+          )) %>
 
   <%%= render(Components::Pagination::Links.new(records: @<%= plural_name %>)) %>
   <%% end %>

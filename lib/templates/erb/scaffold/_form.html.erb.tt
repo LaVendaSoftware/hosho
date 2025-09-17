@@ -3,7 +3,11 @@
 <div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
   <%%= form_for(<%= singular_name %>) do |form| %>
     <%- attributes.each do |attribute| -%>
-    <%%= render(Components::Form::<%= attribute.reference? ? "BelongsTo" : "TextField" %>.new(form, :<%= attribute.name %>)) %>
+    <%- if attribute.reference? -%>
+    <%%= render(Components::Form::BelongsToField.new(form, :<%= attribute.name %>, collection: [])) %>
+    <%- else -%>
+    <%%= render(Components::Form::TextField.new(form, :<%= attribute.name %>)) %>
+    <%- end -%>
     <%- end -%>
 
     <%%= render(Components::Form::SubmitButton.new(form)) %>
