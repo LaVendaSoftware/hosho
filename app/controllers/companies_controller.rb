@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  include Authorizations::Admin
+
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def index
