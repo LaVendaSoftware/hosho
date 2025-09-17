@@ -1,4 +1,4 @@
-class Components::Sidebar::Sidebar < Components::Base
+class Components::Sidebar::Root < Components::Base
   def view_template(&)
     ul(**attrs, &)
   end
