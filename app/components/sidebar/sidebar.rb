@@ -1,11 +1,15 @@
 class Components::Sidebar::Sidebar < Components::Base
-  def view_template
-    aside(class: "w-64 border-r bg-card p-4") do
-      ul(class: "space-y-2") do
-        li do
-          Components::Navbar::Link(label: "Companies", url: companies_path)
-        end
-      end
-    end
+  def view_template(&)
+    ul(**attrs, &)
+  end
+
+  private
+
+  def attrs
+    {
+      data_slot: "sidebar-menu",
+      data_sidebar: "menu",
+      class: "flex w-full min-w-0 flex-col gap-1"
+    }
   end
 end

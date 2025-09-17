@@ -13,4 +13,11 @@ class Components::Base < Phlex::HTML
       super
     end
   end
+
+  private
+
+  def helpers
+    @helpers ||= ApplicationController.helpers
+  end
+  alias_method :h, :helpers
 end

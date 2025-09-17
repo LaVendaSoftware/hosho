@@ -8,10 +8,10 @@ module TranslationHelper
   # Examples:
   #
   #   <%= tm(Post) %>
-  #   # => 'Artigo'
+  #   # => "Artigo"
   #
   #   <%= tm(Post, 2) %>
-  #   # => 'Artigos'
+  #   # => "Artigos"
   #
   # Returns translated model.
   def translate_model_name(model, count = 1)
@@ -27,7 +27,7 @@ module TranslationHelper
   # Examples:
   #
   #   <%= tmp(Post) %>
-  #   # => 'Artigos'
+  #   # => "Artigos"
   #
   # Returns translated model pluralized.
   def translate_model_name_pluralized(model)
@@ -54,7 +54,7 @@ module TranslationHelper
   #
   # Returns translated model pluralized.
   def translate_model_button(model, kind)
-    t("helpers.submit.#{kind}", model: tm(model))
+    t("form.button.#{kind}", model: tm(model))
   end
   alias_method :tmb, :translate_model_button
 
@@ -68,10 +68,10 @@ module TranslationHelper
   # Examples
   #
   #   <%= ta(Post, :title) %>
-  #   # => 'Titulo'
+  #   # => "Titulo"
   #
   #   <%= ta(Post, :title, 2) %>
-  #   # => 'Títulos'
+  #   # => "Títulos"
   #
   # Returns translated model's attribute.
   def translate_model_attribute(model, attribute, count = 1)
@@ -88,15 +88,15 @@ module TranslationHelper
   # Examples:
   #
   #   <%= te(Post, :kind) %>
-  #   # => 'Artigo'
+  #   # => "Artigo"
   #
   #   <%= te(Post, 2) %>
-  #   # => 'Artigos'
+  #   # => "Artigos"
   #
   # Returns translated model's enum names.
-  def translate_model_enum_names(model, enum)
-    model.send(enum).keys.map do |key|
-      [model.human_attribute_name("#{enum}.#{key}"), key]
+  def translate_model_enum_names(model, enum, except: [])
+    model.send(enum).keys.filter_map do |key|
+      [model.human_attribute_name("#{enum}.#{key}"), key] if except.exclude?(key.to_sym)
     end
   end
   alias_method :teo, :translate_model_enum_names
@@ -109,10 +109,10 @@ module TranslationHelper
   # Examples
   #
   #   <%= tb true %>
-  #   # => 'Sim'
+  #   # => "Sim"
   #
   #   <%= tb false %>
-  #   # => 'Não'
+  #   # => "Não"
   #
   # Returns translated boolean's attribute.
   def translate_boolean(value)

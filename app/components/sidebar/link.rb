@@ -1,12 +1,46 @@
 class Components::Sidebar::Link < Components::Base
-  include Phlex::Rails::Helpers::LinkTo
-
-  def initialize(label:, url:)
-    @label = label
+  def initialize(url, label, icon = nil)
     @url = url
+    @label = label
+    @icon = icon
   end
 
   def view_template
-    link_to(@label, @url, class: "block rounded px-3 py-2 hover:bg-muted")
+    li(
+      data_slot: "sidebar-menu-item",
+      data_sidebar: "menu-item",
+      class: "group/menu-item relative"
+    ) do
+      a(
+        href: @url,
+        data_slot: "sidebar-menu-button",
+        data_sidebar: "menu-button",
+        data_size: "default",
+        data_active: "false",
+        class: link_classes,
+        data_state: "closed"
+      ) do
+        Components::Icon(@icon)
+
+        span { @label }
+      end
+    end
+  end
+
+  private
+
+  def link_classes
+    [
+      "peer/ menu-button flex w-full items-center gap-2 overflow-hidden rounded-md ",
+      "p-2 text-left outline-hidden ring-sidebar-ring transition-[width, height, padding] ",
+      "focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground ",
+      "disabled:pointer-events-none disabled:opacity-50 group-has-data-[ sidebar= menu-action]/ ",
+      "menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true] ",
+      ":bg-sidebar-accent data-[active=true] :font-medium data-[active=true] ",
+      ":text-sidebar-accent-foreground data-[ state= open] :hover:bg-sidebar-accent ",
+      "data-[ state= open] :hover:text-sidebar-accent-foreground group-data-[ collapsible= icon] ",
+      ":size-8! group-data-[ collapsible= icon] :p-2! [&>span:last-child]:truncate [&>svg]:size-4 ",
+      "[&>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm"
+    ].join
   end
 end

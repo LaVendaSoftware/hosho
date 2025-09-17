@@ -1,9 +1,13 @@
 class Components::LinkTo::Destroy < Components::Base
-  def initialize(url)
-    @url = url
+  include Phlex::Rails::Helpers::LinkTo
+  include Phlex::Rails::Helpers::T
+
+  def initialize(record)
+    @record = record
   end
 
   def view_template
-    Link(href: @url, variant: :destructive, class: "text-white") { "Destroy" }
+    # TODO: Fix destroy link
+    # link_to(@record, method: :delete) { Components::Icon("trash") }
   end
 end

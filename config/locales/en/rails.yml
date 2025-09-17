@@ -1,6 +1,26 @@
-en:
-  true: "Yes"
-  false: "No"
-  nil: "Empty"
-  enum_select:
-    prompt: "Select an option..."
+pt:
+  true: "Sim"
+  false: "Não"
+  nil: "Vazio"
+  form:
+    button:
+      create: "Criar %{model}"
+      update: "Atualizar %{model}"
+      save: "Salvar %{model}"
+  alerts:
+    create:
+      success: "Registro criado com sucesso."
+    update:
+      success: "Registro atualizado com sucesso."
+    destroy:
+      success: "Registro apagado com sucesso."
+  activerecord:
+    attributes:
+      created_at: "Criado em"
+      updated_at: "Atualizado em"
+  time:
+    formats:
+      custom: "%b %d, %Y, %I:%M:%S %p"
+    distances:
+      past: "há %{time} atrás"
+      future: "Em %{time}"

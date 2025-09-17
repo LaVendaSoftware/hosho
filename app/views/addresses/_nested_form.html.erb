@@ -1,0 +1,12 @@
+<%= form.hidden_field(:id) %>
+
+<div class="grid grid-cols-3 gap-4">
+  <%= render(Components::Form::TextField.new(form, :zip_code)) %>
+  <%= render(Components::Form::TextField.new(form, :street_name)) %>
+  <%= render(Components::Form::TextField.new(form, :building_number)) %>
+  <%= render(Components::Form::TextField.new(form, :district)) %>
+  <%= render(Components::Form::TextField.new(form, :city)) %>
+  <%= render(Components::Form::TextField.new(form, :state)) %>
+</div>
+
+<%= render(Components::Form::TextField.new(form, :reference)) %>

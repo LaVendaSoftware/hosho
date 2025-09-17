@@ -19,7 +19,7 @@ gem "stimulus-rails"
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
@@ -51,5 +51,5 @@ gem "tailwind_merge", "~> 1.3"
 gem "ulid", "~> 1.4", require: "ulid"
 # https://github.com/LaVendaSoftware/ucasy#basic-usage
 gem "ucasy", "~> 0.3.3"
-
-gem "simple_form", "~> 5.3"
+# https://github.com/maful/ruby-phosphor-icons#usage
+gem "phosphor_icons", "~> 0.3.0"

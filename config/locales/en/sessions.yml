@@ -1,0 +1,5 @@
+en:
+  sessions:
+    new:
+      title: "Authentication"
+      subtitle: "Enter your email & password below to login"

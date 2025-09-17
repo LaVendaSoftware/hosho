@@ -2,38 +2,131 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  scan_ruby:
-    runs-on: ubuntu-latest
+  scan:
+    name: Scan for security vulnerabilities
+    runs-on: ubuntu-24.04
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: ⏬️ Checkout code
+        uses: actions/checkout@v5
 
-      - name: Set up Ruby
+      - name: 📦 Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          bundler: default
           bundler-cache: true
+          ruby-version: .ruby-version
 
-      - name: Scan for common Rails security vulnerabilities using static analysis
+      - name: 💎 Verify ruby version
+        run: ruby --version
+
+      - name: 🧪 Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
 
   lint:
-    runs-on: ubuntu-latest
+    name: Check code style
+    runs-on: ubuntu-24.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: ⏬️ Checkout code
+        uses: actions/checkout@v5
 
-      - name: Set up Ruby
+      - name: 📦 Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          bundler: default
           bundler-cache: true
+          ruby-version: .ruby-version
 
-      - name: Lint code for consistent style
+      - name: 💎 Verify ruby version
+        run: ruby --version
+
+      - name: 🧪 Lint code for consistent style
         run: bin/rubocop -f github
 
+      - name: Run ERB Linter
+        run: bin/erb_lint app --format compact
+
+  biome:
+    name: Biome.js
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: ⏬️ Checkout code
+        uses: actions/checkout@v5
+
+      - name: 📦 Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: "yarn"
+
+      - name: 📦 Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: 🧪 Run Biome Linter
+        run: bin/biome
+
+  rspec:
+    name: RSpec
+    runs-on: ubuntu-24.04
+    permissions: write-all
+
+    env:
+      CI: true
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/n10n_test
+
+    services:
+      db:
+        image: postgres:16.0-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: ⏬️ Checkout code
+        uses: actions/checkout@v5
+
+      - name: 📦 Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler: default
+          bundler-cache: true
+          ruby-version: .ruby-version
+
+      - name: 💎 Verify ruby version
+        run: ruby --version
+
+      - name: 📊 Prepare database
+        run: bin/rails db:setup db:test:prepare db:schema:load db:migrate --trace RAILS_ENV=test
+
+      - name: 📂 Assets precompile
+        run: bin/rails assets:precompile
+
+      - name: 🧪 Run RSpec
+        run: bin/rspec
+
+      - name: 📷 Keep screenshots from failed system tests
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots
+          path: ${{ github.workspace }}/tmp/screenshots
+          if-no-files-found: ignore
+
+      - name: ✅ Check code coverage
+        uses: joshmfrankel/simplecov-check-action@main
+        with:
+          minimum_suite_coverage: 10
+          minimum_file_coverage: 10
+          github_token: ${{ secrets.GITHUB_TOKEN }}

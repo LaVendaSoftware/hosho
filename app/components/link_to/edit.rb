@@ -1,9 +1,12 @@
 class Components::LinkTo::Edit < Components::Base
-  def initialize(url)
-    @url = url
+  include Phlex::Rails::Helpers::LinkTo
+  include Phlex::Rails::Helpers::T
+
+  def initialize(record)
+    @record = record
   end
 
   def view_template
-    Link(href: @url, variant: :outline) { "Edit" }
+    link_to([:edit, @record], title: t(".tooltip")) { Components::Icon("pencil") }
   end
 end
