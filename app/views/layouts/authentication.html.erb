@@ -22,14 +22,29 @@
     <%= javascript_include_tag("application", "data-turbo-track": "reload", type: "module") %>
   </head>
 
-  <body>
-    <main style="container">
-      <section class="mx-auto md:w-2/3 w-full">
-        <%= render(Components::Flashes::Success.new(message: flash[:notice])) %>
-        <%= render(Components::Flashes::Error.new(message: flash[:alert])) %>
+  <body class="min-h-screen">
+    <div class="p-4">
+      <%= render(Components::Alerts::Success.new(message: notice)) %>
+      <%= render(Components::Alerts::Error.new(message: alert)) %>
+    </div>
 
-        <%= yield %>
-      </section>
+    <main>
+      <div class="bg-background">
+        <div class="flex  w-full items-center justify-center p-6 md:p-10">
+          <div class="w-full max-w-sm">
+            <div class="flex flex-col gap-6">
+              <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm">
+                <div class="flex items-center gap-3 justify-center">
+                  <%= image_tag("logo.png", width: 50) %>
+                  <h1 class="text-2xl"><%= app_name %></h1>
+                </div>
+
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>
