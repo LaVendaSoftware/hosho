@@ -1,4 +1,4 @@
-pt:
+en:
   activerecord:
     models:
       user:
@@ -7,6 +7,7 @@ pt:
         other: "Users"
     attributes:
       user:
+        name: "Name"
         email_address: "E-mail"
         password: "Password"
         role: "Role"
