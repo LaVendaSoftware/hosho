@@ -21,6 +21,8 @@ class User < ApplicationRecord
     human_enum_singular_name(:role)
   end
 
+  def staff? = admin? || developer?
+
   def disabled? = disabled_at.present?
   alias_method :disabled, :disabled?
 

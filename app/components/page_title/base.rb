@@ -11,14 +11,16 @@ class Components::PageTitle::Base < Components::Base
   def view_template
     content_for(:title, @title)
 
-    header(class: header_classes) do
-      div(class: "flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6") do
-        Components::LinkTo::Back(@back_url)
+    content_for(:header) do
+      header(class: header_classes) do
+        div(class: "flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6") do
+          Components::LinkTo::Back(@back_url)
 
-        Components::Icon(@icon)
-        Heading(level: 1, size: 4) { @title }
+          Components::Icon(@icon)
+          Heading(level: 1, size: 4) { @title }
 
-        div(class: "ml-auto") { Components::LinkTo::New(@link) }
+          div(class: "ml-auto") { Components::LinkTo::New(@link) }
+        end
       end
     end
   end

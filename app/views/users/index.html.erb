@@ -1,10 +1,9 @@
 <%= render(Components::PageTitle::Index.new(model: User, link: new_user_path, icon: "users")) %>
 
-<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
-  <% if @users.blank? %>
-    <%= render(Components::Alerts::NotFound::Male.new(model: User)) %>
-  <% else %>
-    <%= render(Components::Table::Root.new(
+<% if @users.blank? %>
+  <%= render(Components::Alerts::NotFound::Male.new(model: User)) %>
+<% else %>
+  <%= render(Components::Table::Root.new(
           records: @users,
           heads: [
             ta(User, :name),
@@ -19,6 +18,5 @@
           actions: [:link_to_edit, :link_to_show]
         )) %>
 
-    <%= render(Components::Pagination::Links.new(records: @users)) %>
-  <% end %>
-</div>
+  <%= render(Components::Pagination::Links.new(records: @users)) %>
+<% end %>

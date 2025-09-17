@@ -5,4 +5,15 @@ class CompanyRepo < ApplicationRepo
 
     company
   end
+
+  def by_user(user)
+    return none if user.blank?
+    return self if user.staff?
+
+    @collection =
+      collection.includes(:company_users)
+        .where(company_users: {user_id: user.id})
+
+    self
+  end
 end

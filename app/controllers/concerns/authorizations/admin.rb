@@ -5,8 +5,6 @@ module Authorizations
 
     private
 
-    def allowed?
-      Current.user.admin? || Current.user.developer?
-    end
+    def allowed? = Current.user.staff?
   end
 end

@@ -7,12 +7,14 @@ class Components::Alerts::Base < Components::Base
   def view_template
     return if @message.blank?
 
-    Alert(variant:, class: "flex gap-3 items-center") do
-      render(Components::Icon.new(icon))
+    div(class: "mx-4") do
+      Alert(variant:, class: "flex gap-3 items-center") do
+        render(Components::Icon.new(icon))
 
-      div do
-        AlertTitle { @title } if @title.present?
-        AlertDescription { @message }
+        div do
+          AlertTitle { @title } if @title.present?
+          AlertDescription { @message }
+        end
       end
     end
   end

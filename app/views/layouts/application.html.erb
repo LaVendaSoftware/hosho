@@ -38,20 +38,22 @@
                       <%= image_tag("logo.png", width: 24) %>
                       <span class="text-base font-semibold"><%= app_name %></span>
                     <% end %>
+
                   </li>
                 </ul>
+                <%= render(Components::Company::Switcher.new(current_companies, current_company.pid)) %>
               </div>
 
               <div data-slot="sidebar-content" data-sidebar="content" class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden">
                 <div data-slot="sidebar-group" data-sidebar="group" class="relative flex w-full min-w-0 flex-col p-2">
                   <div data-slot="sidebar-group-content" data-sidebar="group-content" class="w-full text-sm flex flex-col gap-2">
-                    <%= render(Components::Sidebar::Sidebar.new) do %>
+                    <%= render(Components::Sidebar::Root.new) do %>
                       <div class="mb-4">
                         <%= render(Components::Sidebar::Heading.new("General")) %>
                         <%= render(Components::Sidebar::Link.new(root_path, "Home", "house")) %>
                       </div>
 
-                      <% if Current.user.admin? || Current.user.developer? %>
+                      <% if Current.user.staff? %>
                         <%= render(Components::Sidebar::Heading.new("Admin")) %>
 
                         <%= render(Components::Sidebar::Link.new(users_path, tmp(User), "users")) %>
@@ -110,6 +112,8 @@
         <main data-slot="sidebar-inset" class="bg-background relative flex w-full flex-1 flex-col md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2">
           <div class="flex flex-1 flex-col">
             <div class="@container/main flex flex-1 flex-col gap-2">
+              <%= content_for(:header) %>
+
               <%= render(Components::Alerts::Success.new(message: notice)) %>
               <%= render(Components::Alerts::Error.new(message: alert)) %>
 

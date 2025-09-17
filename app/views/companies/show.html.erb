@@ -1,5 +1,3 @@
 <%= render(Components::PageTitle::Show.new(record: @company, back_url: companies_path)) %>
 
-<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
-  <%= render("company", company: @company) %>
-</div>
+<%= render("company", company: @company) %>
