@@ -13,7 +13,7 @@ pt:
         disabled: "Desativado?"
         disabled_at: "Desativado em"
       user/roles:
-        buyer: "Comprador"
+        standard: "Comprador"
         seller: "Vendedor"
         manager: "Gerente"
         admin: "Administrador"

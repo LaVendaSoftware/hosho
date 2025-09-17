@@ -12,14 +12,14 @@ ActiveRecord::Base.transaction do
   Company.automotive.create!(name: "AutoDrive Dealership", nif: "789321456").create_address
 
   puts "* Create dev user"
-  User.developer.create!(email_address: "walmir@hosho.tech", password: "walmir@hosho.tech")
+  User.developer.create!(name: "Walmir", email_address: "walmir@hosho.tech", password: "walmir@hosho.tech")
 
   puts "* Create admin users"
-  User.admin.create!(email_address: "alexandre@hosho.tech", password: "alexandre@hosho.tech")
-  User.admin.create!(email_address: "caio@hosho.tech", password: "caio@hosho.tech")
+  User.admin.create!(name: "Caio", email_address: "caio@hosho.tech", password: "caio@hosho.tech")
+  User.admin.create!(name: "Alexandre", email_address: "alexandre@hosho.tech", password: "alexandre@hosho.tech")
 
   puts "* Create manager users"
-  manager = User.manager.create!(email_address: "some@company.com", password: "some@company.com")
+  manager = User.manager.create!(name: "Manager", email_address: "manager@company.com", password: "some@company.com")
   manager.company_users.create!(company: some_company)
 
   puts "✅ Seed finished successfully"

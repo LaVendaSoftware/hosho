@@ -1,4 +1,4 @@
-class CreateAddressesTable < ActiveRecord::Migration[8.0]
+class CreateAddresses < ActiveRecord::Migration[8.0]
   def change
     create_table :addresses do |t|
       t.belongs_to :addressable, null: false, polymorphic: true, index: true

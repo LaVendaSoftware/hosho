@@ -12,7 +12,7 @@ pt:
         role: "Role"
         disabled_at: "Disabled At"
       user/roles:
-        buyer: "Buyer"
+        standard: "Buyer"
         seller: "Seller"
         manager: "Manager"
         admin: "Admin"
