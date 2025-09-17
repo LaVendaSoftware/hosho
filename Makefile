@@ -12,7 +12,7 @@ dbprepare:
 	bin/rails db:setup db:test:prepare db:schema:load db:migrate RAILS_ENV=test
 
 ci:
-	make brakeman rubocop erb-lint dbprepare rspec
+	make brakeman rubocop erb-lint biome dbprepare rspec
 
 rspec:
 	bin/rspec
