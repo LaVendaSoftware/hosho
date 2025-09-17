@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include Authorizations::Admin
+
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
