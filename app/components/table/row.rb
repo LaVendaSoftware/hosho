@@ -1,51 +1,37 @@
 class Components::Table::Row < Components::Base
-  include Phlex::Rails::Helpers::DOMID
-  include Phlex::Rails::Helpers::L
+  include Phlex::Rails::Helpers::LinkTo
 
-  DEFAULT_ACTIONS = [:link_to_edit, :link_to_show, :link_to_destroy]
-
-  def initialize(record:, columns:, actions:, prefix_path: nil, selectable: false)
+  def initialize(record:, columns:, actions: [])
     @record = record
     @columns = columns
     @actions = actions
-    @prefix_path = prefix_path
-    @selectable = selectable
   end
 
   def view_template
     TableRow do
-      @columns.each do |column|
-        TableCell { @record.send(column).presence || "—" }
+      if @actions.present?
+        TableCell(class: "flex gap-2") do
+          @actions.each { |action| send(action, @record) }
+        end
       end
 
-      TableCell { l(@record.updated_at, format: :short) } if @record.respond_to?(:updated_at)
-
-      TableCell(class: "text-right") do
-        if @actions.present?
-          @actions.each do |action|
-            if @record.respond_to?(action)
-              @record.send(action)
-            elsif DEFAULT_ACTIONS.include?(action)
-              send(action)
-            end
-          end
-        end
-        # Components::LinkTo::Destroy(company_path(company))
+      @columns.each do |column|
+        TableCell { @record.send(column) }
       end
     end
   end
 
   private
 
-  def link_to_edit
-    Components::LinkTo::Edit(@record, prefix_path: @prefix_path)
+  def link_to_edit(record)
+    Components::LinkTo::Edit(record)
   end
 
-  def link_to_show
-    plain "V "
+  def link_to_show(record)
+    Components::LinkTo::Show(record)
   end
 
-  def link_to_destroy
-    plain "D "
+  def link_to_destroy(record)
+    Components::LinkTo::Destroy(record)
   end
 end

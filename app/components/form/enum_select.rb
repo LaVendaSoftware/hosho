@@ -1,13 +1,21 @@
 class Components::Form::EnumSelect < Components::Base
-  def initialize(form, attribute)
+  def initialize(form, attribute, collection: [], except: [], **options)
     @form = form
     @attribute = attribute
-    @resource = @form.object
-    @klass = @resource.class
-    @plural_name = @attribute.to_s.pluralize
+    @collection = collection
+    @except = except
+    @options = options
   end
 
   def view_template
-    Components::Form::Input(@form, :industry, collection: teo(@klass, @plural_name), include_blank: t("enum_select.prompt"))
+    Components::Form::Select(@form, @attribute, collection:, **@options)
+  end
+
+  private
+
+  def collection
+    return @collection if @collection.present?
+
+    h.teo(@form.object.class, @attribute.to_s.pluralize, except: @except)
   end
 end

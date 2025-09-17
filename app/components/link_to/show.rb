@@ -1,4 +1,4 @@
-class Components::LinkTo::Destroy < Components::Base
+class Components::LinkTo::Show < Components::Base
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::T
 
@@ -7,7 +7,6 @@ class Components::LinkTo::Destroy < Components::Base
   end
 
   def view_template
-    # TODO: Fix destroy link
-    # link_to(@record, method: :delete) { Components::Icon("trash") }
+    link_to(@record) { Components::Icon("eye") }
   end
 end
