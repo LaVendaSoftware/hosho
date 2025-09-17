@@ -3,18 +3,32 @@ FactoryBot.define do
     name { Faker::Name.name }
     email_address { Faker::Internet.unique.email }
     password { Faker::Internet.password }
-    role { User.roles.keys.sample }
+    role { "standard" }
+
+    trait :seller do
+      role { "seller" }
+    end
+    factory :seller_user, traits: [:seller]
+
+    trait :manager do
+      role { "manager" }
+    end
+    factory :manager_user, traits: [:manager]
+
+    trait :admin do
+      role { "admin" }
+    end
+    factory :admin_user, traits: [:admin]
+
+    trait :developer do
+      role { "developer" }
+    end
+    factory :developer_user, traits: [:developer]
 
     trait :blank do
       email_address { nil }
       password { nil }
     end
-
-    trait :developer do
-      role { "developer" }
-    end
-
     factory :blank_user, traits: [:blank]
-    factory :developer_user, traits: [:developer]
   end
 end
