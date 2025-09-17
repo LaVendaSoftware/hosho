@@ -19,7 +19,7 @@
     @<%= singular_table_name %> = repo.build(<%= "#{singular_table_name}_params" %>)
 
     if @<%= orm_instance.save %>
-      redirect_to(<%= redirect_resource_name %>, notice: t("flashes.create.success"))
+      redirect_to(<%= redirect_resource_name %>, notice: t("alerts.create.success"))
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@
 
   def update
     if @<%= orm_instance.update("#{singular_table_name}_params") %>
-      redirect_to(<%= redirect_resource_name %>, notice: t("flashes.update.success"), status: :see_other)
+      redirect_to(<%= redirect_resource_name %>, notice: t("alerts.update.success"), status: :see_other)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@
 
   def destroy
     @<%= orm_instance.destroy %>
-    redirect_to(<%= index_helper %>_path, notice: t("flashes.destroy.success"), status: :see_other)
+    redirect_to(<%= index_helper %>_path, notice: t("alerts.destroy.success"), status: :see_other)
   end
 
   private

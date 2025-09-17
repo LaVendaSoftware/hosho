@@ -1,0 +1,15 @@
+en:
+  components:
+    alerts:
+      not_found:
+        male: "No %{model} were found."
+        female: "No %{model} were found."
+    link_to:
+      new:
+        label: "Create"
+      edit:
+        tooltip: "Edit"
+      show:
+        tooltip: "See"
+      destroy:
+        tooltip: "Destroy"

@@ -1,0 +1,20 @@
+pt:
+  activerecord:
+    models:
+      address:
+        one: "Endereço"
+        zero: "Endereços"
+        other: "Endereços"
+    attributes:
+      address:
+        country: "País"
+        zip_code: "Código postal"
+        street_name: "Rua"
+        building_number: "Número"
+        district: "Distrito"
+        city: "Cidade"
+        state: "Estado"
+        complement: "Complemento"
+        latitude: "Latitude"
+        longitude: "Longitude"
+        reference: "Referência"

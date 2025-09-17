@@ -1,5 +1,5 @@
 <div id="<%%= dom_id(<%= singular_name %>) %>">
-  <%%= render(UI::Page::Details.new(
+  <%%= render(Components::Page::Show.new(
         record: <%= singular_name %>,
         columns: [
           <%- attributes.reject(&:password_digest?).each do |attribute| -%>

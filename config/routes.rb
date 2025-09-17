@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
 
-  resources :companies
+  resources :users, except: :destroy
+  resources :companies, except: :destroy
 end

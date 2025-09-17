@@ -1,0 +1,10 @@
+<div id="<%= dom_id(company) %>">
+  <%= render(Components::Page::Show.new(
+        record: company,
+        columns: [
+          :name,
+          :nif,
+          :humanized_industry,
+        ]
+      )) %>
+</div>

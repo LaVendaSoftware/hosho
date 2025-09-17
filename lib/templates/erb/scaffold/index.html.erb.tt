@@ -1,26 +1,25 @@
-<div id="<%= plural_name %>">
-  <%%= render(Components::Page::IndexTitle.new(model: <%= singular_name.classify %>)) %>
+<%%= render(Components::PageTitle::Index.new(model: <%= singular_name.classify %>, link: new_<%= singular_name%>_path, icon: nil)) %>
 
+<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
   <%% if @<%= plural_name %>.blank? %>
-    <%%= render(Components::Alerts::NotFound::Female.new(model: <%= singular_name.classify %>)) %>
-    <%%#= render(Components::Alerts::NotFound::Male.new(model: <%= singular_name.classify %>)) %>
+  <%%= render(Components::Alerts::NotFound::Male.new(model: <%= singular_name.classify %>)) %>
+  <%%#= render(Components::Alerts::NotFound::Female.new(model: <%= singular_name.classify %>)) %>
   <%% else %>
-    <%%= render(Components::Table::Root.new(
+  <%%= render(Components::Table::Root.new(
           records: @<%= plural_name %>,
-          heads: [
-          <%- attributes.each do |attribute| -%>
-            ta(<%= singular_name.classify %>, :<%= attribute.name %>),
-          <%- end -%>
-          ],
-          columns: [
-          <%- attributes.each do |attribute| -%>
-            :<%= attribute.name %><%= "_id" if attribute.reference? %>,
-          <%- end -%>
-          ],
-          actions: [:link_to_edit, :link_to_show, :link_to_destroy],
-          prefix_path: nil
-        )) %>
+  heads: [
+  <%- attributes.each do |attribute| -%>
+    ta(<%= singular_name.classify %>, :<%= attribute.name %>),
+  <%- end -%>
+  ],
+  columns: [
+  <%- attributes.each do |attribute| -%>
+    :<%= attribute.name %><%= "_id" if attribute.reference? %>,
+  <%- end -%>
+  ],
+  actions: [:link_to_edit, :link_to_show, :link_to_destroy]
+  )) %>
 
-    <%%#= render(Components::Pagination::Links.new(records: @<%= plural_name %>)) %>
+  <%%= render(Components::Pagination::Links.new(records: @<%= plural_name %>)) %>
   <%% end %>
 </div>
