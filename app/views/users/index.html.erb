@@ -4,19 +4,19 @@
   <%= render(Components::Alerts::NotFound::Male.new(model: User)) %>
 <% else %>
   <%= render(Components::Table::Root.new(
-          records: @users,
-          heads: [
-            ta(User, :name),
-            ta(User, :email_address),
-            ta(User, :role)
-          ],
-          columns: [
-            :name,
-            :email_address,
-            :humanized_role
-          ],
-          actions: [:link_to_edit, :link_to_show]
-        )) %>
+        records: @users,
+        heads: [
+          ta(User, :name),
+          ta(User, :email_address),
+          ta(User, :role)
+        ],
+        columns: [
+          :name,
+          :email_address,
+          :humanized_role
+        ],
+        actions: [:link_to_edit, :link_to_show]
+      )) %>
 
   <%= render(Components::Pagination::Links.new(records: @users)) %>
 <% end %>
