@@ -38,4 +38,62 @@ describe User do
 
     it { expect(found_user).to be_present }
   end
+
+  describe "#has_permission?" do
+    subject(:user) { described_class.new(role: user_role) }
+
+    context "when the user is standard" do
+      let(:user_role) { :standard }
+
+      it "has permission for :standard" do
+        expect(user).to have_permission(:standard)
+      end
+
+      it "does not have permission for :seller" do
+        expect(user).not_to have_permission(:seller)
+      end
+    end
+
+    context "when the user is manager" do
+      let(:user_role) { :manager }
+
+      it "has permission for :seller" do
+        expect(user).to have_permission(:seller)
+      end
+
+      it "has permission for :manager" do
+        expect(user).to have_permission(:manager)
+      end
+
+      it "does not have permission for :admin" do
+        expect(user).not_to have_permission(:admin)
+      end
+    end
+
+    context "when the user is admin" do
+      let(:user_role) { :admin }
+
+      it "has permission for :manager" do
+        expect(user).to have_permission(:manager)
+      end
+
+      it "has permission for :admin" do
+        expect(user).to have_permission(:admin)
+      end
+
+      it "does not have permission for :developer" do
+        expect(user).not_to have_permission(:developer)
+      end
+    end
+
+    context "when the user is developer" do
+      let(:user_role) { :developer }
+
+      it "has permission for every role" do
+        described_class.roles.keys.each do |role|
+          expect(user).to have_permission(role)
+        end
+      end
+    end
+  end
 end

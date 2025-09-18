@@ -53,7 +53,11 @@
                         <%= render(Components::Sidebar::Link.new(root_path, "Home", "house")) %>
                       </div>
 
-                      <% if Current.user.staff? %>
+                      <% if Current.user.has_permission?(:manager) %>
+                        <%= render(Components::Sidebar::Link.new(categories_path, tmp(Category), "tag")) %>
+                      <% end %>
+
+                      <% if Current.user.has_permission?(:admin) %>
                         <%= render(Components::Sidebar::Heading.new("Admin")) %>
 
                         <%= render(Components::Sidebar::Link.new(users_path, tmp(User), "users")) %>

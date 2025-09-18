@@ -8,7 +8,7 @@ class CompanyRepo < ApplicationRepo
 
   def by_user(user)
     return none if user.blank?
-    return self if user.staff?
+    return self if user.has_permission?(:admin)
 
     @collection =
       collection.includes(:company_users)

@@ -2,6 +2,14 @@ class User < ApplicationRecord
   include PIDable
   include Humanizable
 
+  ROLE_PERMISSIONS = {
+    developer: ["developer"],
+    admin: ["admin", "developer"],
+    manager: ["manager", "admin", "developer"],
+    seller: ["seller", "manager", "admin", "developer"],
+    standard: ["standard", "seller", "manager", "admin", "developer"]
+  }
+
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :company_users, dependent: :destroy
@@ -21,7 +29,9 @@ class User < ApplicationRecord
     human_enum_singular_name(:role)
   end
 
-  def staff? = admin? || developer?
+  def has_permission?(role_name)
+    role.in?(ROLE_PERMISSIONS[role_name.to_s.to_sym])
+  end
 
   def disabled? = disabled_at.present?
   alias_method :disabled, :disabled?
