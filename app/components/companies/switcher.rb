@@ -1,4 +1,4 @@
-class Components::Company::Switcher < Components::Base
+class Components::Companies::Switcher < Components::Base
   def initialize(companies, current_company_pid = nil)
     @companies = companies
     @current_company_pid = current_company_pid
