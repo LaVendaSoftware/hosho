@@ -41,7 +41,7 @@
 
                   </li>
                 </ul>
-                <%= render(Components::Company::Switcher.new(current_companies, current_company.pid)) %>
+                <%= render(Components::Companies::Switcher.new(current_companies, current_company.pid)) %>
               </div>
 
               <div data-slot="sidebar-content" data-sidebar="content" class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden">
@@ -51,11 +51,11 @@
                       <div class="mb-4">
                         <%= render(Components::Sidebar::Heading.new("General")) %>
                         <%= render(Components::Sidebar::Link.new(root_path, "Home", "house")) %>
-                      </div>
 
-                      <% if Current.user.has_permission?(:manager) %>
-                        <%= render(Components::Sidebar::Link.new(categories_path, tmp(Category), "tag")) %>
-                      <% end %>
+                        <% if Current.user.has_permission?(:manager) %>
+                          <%= render(Components::Sidebar::Link.new(categories_path, tmp(Category), "tag")) %>
+                        <% end %>
+                      </div>
 
                       <% if Current.user.has_permission?(:admin) %>
                         <%= render(Components::Sidebar::Heading.new("Admin")) %>

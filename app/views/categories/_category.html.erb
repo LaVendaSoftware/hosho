@@ -1,0 +1,9 @@
+<div id="<%= dom_id(category) %>">
+  <%= render(Components::Page::Show.new(
+        record: category,
+        columns: [
+          :company_name,
+          :title
+        ]
+      )) %>
+</div>
