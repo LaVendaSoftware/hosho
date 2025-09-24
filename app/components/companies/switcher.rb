@@ -13,7 +13,7 @@ class Components::Companies::Switcher < Components::Base
           div(class: "flex items-center space-x-1") do
             Components::Icon("magnifying-glass")
             span(class: "text-muted-foreground font-normal") do
-              t(".change")
+              current_company_name
             end
           end
         end
@@ -25,9 +25,9 @@ class Components::Companies::Switcher < Components::Base
           CommandList do
             CommandGroup(title: tmp(Company)) do
               @companies.each do |company|
-                CommandItem(value: company[:name], href: company_path(company)) do
+                CommandItem(value: company.name, href: current_company_path(company.pid)) do
                   Components::Icon("arrows-left-right")
-                  plain company[:name]
+                  plain company.name
                 end
               end
             end
@@ -35,5 +35,17 @@ class Components::Companies::Switcher < Components::Base
         end
       end
     end
+  end
+
+  private
+
+  def current_company_name
+    return t(".change") if current_company.blank?
+
+    current_company.name
+  end
+
+  def current_company
+    @current_company ||= @companies.find_by(pid: @current_company_pid)
   end
 end
