@@ -13,3 +13,8 @@ pt:
         tooltip: "Ver"
       destroy:
         tooltip: "Apagar"
+    companies:
+      switcher:
+        change: "Alternar empresa"
+        search_placeholder: "Selecione empresa..."
+        not_found: "Empresa não encontrada."
