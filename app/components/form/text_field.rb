@@ -10,9 +10,7 @@ class Components::Form::TextField < Components::Base
       span { @form.label(@attribute, class: label_classes) }
       span { input }
 
-      if @form.object.errors.messages[@attribute].present?
-        span(class: "text-red-500 italic") { @form.object.errors.full_messages_for(@attribute).to_sentence }
-      end
+      errors
     end
   end
 
@@ -20,6 +18,12 @@ class Components::Form::TextField < Components::Base
 
   def input
     @form.text_field(@attribute, class: input_classes, **@options)
+  end
+
+  def errors
+    return if @form.object.errors.messages[@attribute].blank?
+
+    span(class: "text-red-500 italic") { @form.object.errors.full_messages_for(@attribute).to_sentence }
   end
 
   def label_classes

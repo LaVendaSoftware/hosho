@@ -1,0 +1,22 @@
+<%= render(Components::PageTitle::Index.new(model: Category, link: new_category_path, icon: "tag")) %>
+
+<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
+  <% if @categories.blank? %>
+    <%= render(Components::Alerts::NotFound::Female.new(model: Category)) %>
+  <% else %>
+    <%= render(Components::Table::Root.new(
+          records: @categories,
+          heads: [
+            ta(Category, :company),
+            ta(Category, :title)
+          ],
+          columns: [
+            :company_name,
+            :title
+          ],
+          actions: [:link_to_edit, :link_to_show, :link_to_destroy]
+        )) %>
+
+    <%= render(Components::Pagination::Links.new(records: @categories)) %>
+  <% end %>
+</div>

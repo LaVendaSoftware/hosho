@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_19_135902) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_17_215505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -31,6 +31,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_19_135902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "pid", default: "", null: false
+    t.bigint "company_id", null: false
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id", "title"], name: "index_categories_on_company_id_and_title", unique: true
+    t.index ["company_id"], name: "index_categories_on_company_id"
+    t.index ["pid"], name: "index_categories_on_pid", unique: true
   end
 
   create_table "companies", force: :cascade do |t|
@@ -77,6 +88,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_19_135902) do
     t.index ["pid"], name: "index_users_on_pid", unique: true
   end
 
+  add_foreign_key "categories", "companies"
   add_foreign_key "company_users", "companies"
   add_foreign_key "company_users", "users"
   add_foreign_key "sessions", "users"

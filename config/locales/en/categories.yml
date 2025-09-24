@@ -1,0 +1,21 @@
+en:
+  activerecord:
+    models:
+      category:
+        one: "Category"
+        zero: "Categories"
+        other: "Categories"
+    attributes:
+      category:
+        title: "Title"
+        company: "Company"
+        company_id: "Company"
+        company_name: "Company"
+
+  categories:
+    create:
+      success: "Category was successfully created."
+    update:
+      success: "Category was successfully updated."
+    destroy:
+      success: "Category was successfully destroyed."

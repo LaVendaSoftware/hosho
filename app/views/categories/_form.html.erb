@@ -1,0 +1,10 @@
+<%= render(Components::PageTitle::Form.new(record: category, back_url: categories_path)) %>
+
+<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
+  <%= form_for(category) do |form| %>
+    <%= render(Components::Companies::ReadOnlyField.new(form, company: current_company)) %>
+    <%= render(Components::Form::TextField.new(form, :title)) %>
+
+    <%= render(Components::Form::SubmitButton.new(form)) %>
+  <% end %>
+</div>
