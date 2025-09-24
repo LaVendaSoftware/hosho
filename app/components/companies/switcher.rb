@@ -1,7 +1,7 @@
 class Components::Companies::Switcher < Components::Base
-  def initialize(companies, current_company_pid = nil)
+  def initialize(companies, current_company = nil)
     @companies = companies
-    @current_company_pid = current_company_pid
+    @current_company = current_company
   end
 
   def view_template
@@ -13,7 +13,7 @@ class Components::Companies::Switcher < Components::Base
           div(class: "flex items-center space-x-1") do
             Components::Icon("magnifying-glass")
             span(class: "text-muted-foreground font-normal") do
-              current_company_name
+              @current_company.blank? ? t(".change") : @current_company.name
             end
           end
         end
@@ -35,17 +35,5 @@ class Components::Companies::Switcher < Components::Base
         end
       end
     end
-  end
-
-  private
-
-  def current_company_name
-    return t(".change") if current_company.blank?
-
-    current_company.name
-  end
-
-  def current_company
-    @current_company ||= @companies.find_by(pid: @current_company_pid)
   end
 end

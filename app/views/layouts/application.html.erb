@@ -41,7 +41,7 @@
 
                   </li>
                 </ul>
-                <%= render(Components::Companies::Switcher.new(current_companies, current_company.pid)) %>
+                <%= render(Components::Companies::Switcher.new(current_companies, current_company)) %>
               </div>
 
               <div data-slot="sidebar-content" data-sidebar="content" class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden">
