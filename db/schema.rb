@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_24_020053) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_26_003619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -66,6 +66,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_24_020053) do
     t.index ["user_id"], name: "index_company_users_on_user_id"
   end
 
+  create_table "product_variants", force: :cascade do |t|
+    t.string "pid", default: "", null: false
+    t.bigint "product_id", null: false
+    t.string "title", null: false
+    t.decimal "price", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pid"], name: "index_product_variants_on_pid", unique: true
+    t.index ["product_id"], name: "index_product_variants_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "pid", default: "", null: false
     t.bigint "category_id", null: false
@@ -103,6 +115,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_24_020053) do
   add_foreign_key "categories", "companies"
   add_foreign_key "company_users", "companies"
   add_foreign_key "company_users", "users"
+  add_foreign_key "product_variants", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "sessions", "users"
 end

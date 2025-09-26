@@ -4,7 +4,12 @@
   <%= form_for(product) do |form| %>
     <%= render(Components::Form::BelongsToField.new(form, :category, collection: current_categories.pluck(:title, :id))) %>
     <%= render(Components::Form::TextField.new(form, :title)) %>
-    <%= render(Components::Form::TextField.new(form, :description)) %>
+    <%= render(Components::Form::TextAreaField.new(form, :description)) %>
+
+    <%= render(RubyUI::Heading.new(level: 3, class: "mb-2") { tm(ProductVariant) }) %>
+    <%= form.fields_for(:variants) do |f| %>
+      <%= render("product_variants/nested_form", form: f) %>
+    <% end %>
 
     <%= render(Components::Form::SubmitButton.new(form)) %>
   <% end %>

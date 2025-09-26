@@ -1,0 +1,15 @@
+<div class="mb-2 border-t">
+  <%= form.hidden_field(:id) %>
+
+  <div class="pt-4 grid grid-cols-2 gap-4">
+    <div class="col-span- 2">
+      <%= render(Components::Form::TextField.new(form, :title)) %>
+    </div>
+
+    <div>
+      <%= render(Components::Form::CurrencyField.new(form, :price)) %>
+    </div>
+  </div>
+
+  <%= render(Components::Form::TextAreaField.new(form, :description)) %>
+</div>

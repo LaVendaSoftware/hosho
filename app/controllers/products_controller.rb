@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
   private
 
   def repo
-    @repo ||= ApplicationRepo.new(Product)
+    @repo ||= ProductRepo.new(Product).by_category(current_categories.ids)
   end
 
   def set_product
@@ -49,6 +49,15 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.expect(product: [:category_id, :title, :description])
+    params.expect(product: [
+      :category_id, :title, :description,
+      variants_attributes: [[
+        :id,
+        :title,
+        :price,
+        :description,
+        :_destroy
+      ]]
+    ])
   end
 end
