@@ -7,7 +7,7 @@
     <%= render(Components::Form::TextField.new(form, :title)) %>
     <%= render(Components::Form::TextAreaField.new(form, :description)) %>
 
-    <div data-controller="nested-form", data-nested-form-wrapper-selector-value=".nested-form-wrapper">
+    <div data-controller="nested-form" data-nested-form-wrapper-selector-value=".nested-form-wrapper">
       <div class="flex w-full cursor-vertical-text">
         <%= render(Components::Subtitle.new(tm(ProductVariant))) %>
         <%= render(Components::NestedField::Add.new) %>
