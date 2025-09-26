@@ -5,6 +5,6 @@ module Authorizations
 
     private
 
-    def allowed? = Current.user.has_permission?(:admin)
+    def allowed? = Current.user.has_permission?(:manager)
   end
 end
