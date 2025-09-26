@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  include Authorizations::Manager
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index

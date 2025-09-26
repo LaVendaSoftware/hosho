@@ -19,7 +19,7 @@ ActiveRecord::Base.transaction do
   User.admin.create!(name: "Alexandre", email_address: "alexandre@hosho.tech", password: "alexandre@hosho.tech")
 
   puts "* Create manager users"
-  User.manager.create!(name: "Manager", email_address: "manager@company.com", password: "some@company.com", company_ids: [some_company.id])
+  User.manager.create!(name: "Manager", email_address: "manager@company.com", password: "manager@company.com", company_ids: [some_company.id])
 
   puts "✅ Seed finished successfully"
 end
