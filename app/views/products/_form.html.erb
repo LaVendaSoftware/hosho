@@ -6,10 +6,25 @@
     <%= render(Components::Form::TextField.new(form, :title)) %>
     <%= render(Components::Form::TextAreaField.new(form, :description)) %>
 
-    <%= render(RubyUI::Heading.new(level: 3, class: "mb-2") { tm(ProductVariant) }) %>
-    <%= form.fields_for(:variants) do |f| %>
-      <%= render("product_variants/nested_form", form: f) %>
-    <% end %>
+    <div data-controller="nested-form", data-nested-form-wrapper-selector-value=".nested-form-wrapper">
+      <div class="flex w-full cursor-vertical-text">
+        <%= render(RubyUI::Heading.new(level: 3, class: "mb-2") { tm(ProductVariant) }) %>
+
+        <%= render(Components::NestedField::Add.new) %>
+      </div>
+
+      <template data-nested-form-target="template">
+        <%= form.fields_for(:variants, ProductVariant.new, child_index: "NEW_RECORD") do |f| %>
+          <%= render("product_variants/nested_form", form: f) %>
+        <% end %>
+      </template>
+
+      <%= form.fields_for(:variants) do |f| %>
+        <%= render("product_variants/nested_form", form: f) %>
+      <% end %>
+
+      <div data-nested-form-target="target"></div>
+    </div>
 
     <%= render(Components::Form::SubmitButton.new(form)) %>
   <% end %>

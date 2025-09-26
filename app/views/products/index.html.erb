@@ -1,8 +1,7 @@
-<%= render(Components::PageTitle::Index.new(model: Product, link: new_product_path, icon: nil)) %>
+<%= render(Components::PageTitle::Index.new(model: Product, link: new_product_path, icon: "shopping-bag-open")) %>
 
 <% if @products.blank? %>
   <%= render(Components::Alerts::NotFound::Male.new(model: Product)) %>
-  <%#= render(Components::Alerts::NotFound::Female.new(model: Product)) %>
 <% else %>
   <%= render(Components::Table::Root.new(
         records: @products,
