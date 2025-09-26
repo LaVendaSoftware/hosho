@@ -1,9 +1,10 @@
-<div id="<%= dom_id(product) %>">
+<div id="<%= dom_id(product_variant) %>">
   <%= render(Components::Page::Show.new(
-        record: product,
+        record: product_variant,
         columns: [
-          :category_title,
+          :product_title,
           :title,
+          :formatted_price,
           :description
         ]
       )) %>
