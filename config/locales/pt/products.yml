@@ -7,10 +7,11 @@ pt:
         other: "Produtos"
     attributes:
       product:
-        title: "Título"
         category: "Categoria"
         category_id: "Categoria"
         category_title: "Categoria"
+        title: "Título"
+        description: "Descrição"
 
   categories:
     create:

@@ -7,10 +7,11 @@ en:
         other: "Products"
     attributes:
       product:
-        title: "Title"
         category: "Category"
         category_id: "Category"
         category_title: "Category"
+        title: "Title"
+        description: "Description"
 
   categories:
     reate:
