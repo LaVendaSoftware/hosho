@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    models:
+      product_variant:
+        one: "Product variant"
+        zero: "Product variant"
+        other: "Product variant"
+    attributes:
+      product_variant:
+        product: "Product"
+        product_id: "Product"
+        product_title: "Product"
+        title: "Title"
+        description: "Description"
+        price: "Price"
+
+  product_variants:
+    create:
+      success: "Product variant was successfully created."
+    update:
+      success: "Product variant was successfully updated."
+    destroy:
+      success: "Product variant was successfully destroyed."

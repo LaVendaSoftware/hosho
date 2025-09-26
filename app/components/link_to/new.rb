@@ -18,12 +18,6 @@ class Components::LinkTo::New < Components::Base
   private
 
   def link_class
-    [
-      "flex whitespace-nowrap inline-flex items-center justify-center rounded-md ",
-      "font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 ",
-      "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ",
-      "aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:cursor-not-allowed ",
-      "px-2 h-9 text-sm border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
-    ]
+    "whitespace-nowrap inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring aria-disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:cursor-not-allowed px-4 h-9 text-sm bg-primary text-primary-foreground shadow hover:bg-primary/90"
   end
 end

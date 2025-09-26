@@ -1,0 +1,31 @@
+<%= render(Components::PageTitle::Form.new(record: product, back_url: products_path)) %>
+
+<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
+  <%= form_for(product) do |form| %>
+    <%= render(Components::Subtitle.new(tm(Product))) %>
+    <%= render(Components::Form::BelongsToField.new(form, :category, collection: current_categories.pluck(:title, :id))) %>
+    <%= render(Components::Form::TextField.new(form, :title)) %>
+    <%= render(Components::Form::TextAreaField.new(form, :description)) %>
+
+    <div data-controller="nested-form" data-nested-form-wrapper-selector-value=".nested-form-wrapper">
+      <div class="flex w-full cursor-vertical-text">
+        <%= render(Components::Subtitle.new(tm(ProductVariant))) %>
+        <%= render(Components::NestedField::Add.new) %>
+      </div>
+
+      <template data-nested-form-target="template">
+        <%= form.fields_for(:variants, ProductVariant.new, child_index: "NEW_RECORD") do |f| %>
+          <%= render("product_variants/nested_form", form: f) %>
+        <% end %>
+      </template>
+
+      <%= form.fields_for(:variants) do |f| %>
+        <%= render("product_variants/nested_form", form: f) %>
+      <% end %>
+
+      <div data-nested-form-target="target"></div>
+    </div>
+
+    <%= render(Components::Form::SubmitButton.new(form)) %>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+<div id="<%= dom_id(form.object) %>" data-new-record="<%= form.object.new_record? %>" class="my-2 border-t nested-form-wrapper rounded-xl border bg-background shadow overflow-hidden nested-form-wrapper px-4 pt-4 mb-4">
+  <%= form.hidden_field(:id) %>
+  <%= form.hidden_field(:_destroy) %>
+
+  <div class="flex justify-end">
+    <%= render(Components::NestedField::Remove.new) %>
+  </div>
+
+  <div class="pt-4 grid grid-cols-2 gap-4">
+    <div class="col-span- 2">
+      <%= render(Components::Form::TextField.new(form, :title)) %>
+    </div>
+
+    <div>
+      <%= render(Components::Form::CurrencyField.new(form, :price)) %>
+    </div>
+  </div>
+
+  <%= render(Components::Form::TextAreaField.new(form, :description)) %>
+</div>

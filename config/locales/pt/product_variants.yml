@@ -1,0 +1,23 @@
+pt:
+  activerecord:
+    models:
+      product_variant:
+        one: "Variante de produto"
+        zero: "Variantes de produto"
+        other: "Variantes de produto"
+    attributes:
+      product_variant:
+        product: "Produto"
+        product_id: "Produto"
+        product_title: "Produto"
+        title: "Título"
+        description: "Descrição"
+        price: "Preço"
+
+  product_variants:
+    create:
+      success: "Variante de produto foi criada com sucesso."
+    update:
+      success: "Variante de produto foi atualizada com sucesso."
+    destroy:
+      success: "Variante de produto foi apagada com sucesso."
