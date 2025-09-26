@@ -7,6 +7,6 @@ class Components::Form::BelongsToField < Components::Base
   end
 
   def view_template
-    Components::Form::Select(@form, @attribute, collection: @collection, **@options)
+    Components::Form::Select(@form, "#{@attribute}_id", collection: @collection, **@options)
   end
 end

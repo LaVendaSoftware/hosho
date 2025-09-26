@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :users, except: :destroy
   resources :companies, except: :destroy
   resources :categories
+  resources :products
 
   resources :current_companies, only: :show, param: "pid"
 end

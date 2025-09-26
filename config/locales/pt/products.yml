@@ -1,0 +1,21 @@
+pt:
+  activerecord:
+    models:
+      product:
+        one: "Produto"
+        zero: "Produtos"
+        other: "Produtos"
+    attributes:
+      product:
+        title: "Título"
+        category: "Categoria"
+        category_id: "Categoria"
+        category_title: "Categoria"
+
+  categories:
+    create:
+      success: "Produto foi criada com sucesso."
+    update:
+      success: "Produto foi atualizada com sucesso."
+    destroy:
+      success: "Produto foi apagada com sucesso."

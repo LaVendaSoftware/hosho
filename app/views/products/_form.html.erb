@@ -1,0 +1,11 @@
+<%= render(Components::PageTitle::Form.new(record: product, back_url: products_path)) %>
+
+<div class="flex flex-col gap-4 p-4 md:gap-6 md:p-6">
+  <%= form_for(product) do |form| %>
+    <%= render(Components::Form::BelongsToField.new(form, :category, collection: current_categories.pluck(:title, :id))) %>
+    <%= render(Components::Form::TextField.new(form, :title)) %>
+    <%= render(Components::Form::TextField.new(form, :description)) %>
+
+    <%= render(Components::Form::SubmitButton.new(form)) %>
+  <% end %>
+</div>

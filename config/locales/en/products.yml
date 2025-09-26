@@ -1,0 +1,21 @@
+en:
+  activerecord:
+    models:
+      product:
+        one: "Product"
+        zero: "Products"
+        other: "Products"
+    attributes:
+      product:
+        title: "Title"
+        category: "Category"
+        category_id: "Category"
+        category_title: "Category"
+
+  categories:
+    reate:
+      success: "Product was successfully created."
+    update:
+      success: "Product was successfully updated."
+    destroy:
+      success: "Product was successfully destroyed."

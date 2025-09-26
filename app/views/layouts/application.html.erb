@@ -54,6 +54,7 @@
 
                         <% if Current.user.has_permission?(:manager) %>
                           <%= render(Components::Sidebar::Link.new(categories_path, tmp(Category), "tag")) %>
+                          <%= render(Components::Sidebar::Link.new(products_path, tmp(Product), "shopping-bag-open")) %>
                         <% end %>
                       </div>
 
