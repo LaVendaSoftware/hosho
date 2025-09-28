@@ -1,0 +1,23 @@
+pt:
+  activerecord:
+    models:
+      payment:
+        one: "Item do pedido"
+        zero: "Itens do pedido"
+        other: "Itens do pedido"
+    attributes:
+      payment:
+        order: "Pedido"
+        order_id: "Pedido"
+        total: "Total"
+        gateway_payment_id: "ID externo"
+        paid_at: "Pago em"
+      payment/gateway_types:
+        stripe: "Stripe"
+      payment/statuses:
+        pending: "Pendente"
+        paid: "Pago"
+        overdue: "Vencido"
+        refunded: "Estornado"
+        canceled: "Cancelado"
+        expired: "Expirado"
