@@ -1,0 +1,19 @@
+pt:
+  activerecord:
+    models:
+      order:
+        one: "Pedido"
+        zero: "Pedidos"
+        other: "Pedidos"
+    attributes:
+      order:
+        company: "Empresa"
+        company_id: "Empresa"
+        company_name: "Empresa"
+        user: "Usuário"
+        user_id: "Usuário"
+        user_name: "Usuário"
+        status: "Status"
+      order/statuses:
+        pending: "Pendente"
+        ready: "Pronto"
