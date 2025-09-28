@@ -11,11 +11,3 @@ pt:
         company: "Empresa"
         company_id: "Empresa"
         company_name: "Empresa"
-
-  categories:
-    create:
-      success: "Categoria foi criada com sucesso."
-    update:
-      success: "Categoria foi atualizada com sucesso."
-    destroy:
-      success: "Categoria foi apagada com sucesso."

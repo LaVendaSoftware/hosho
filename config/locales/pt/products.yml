@@ -12,11 +12,3 @@ pt:
         category_title: "Categoria"
         title: "Título"
         description: "Descrição"
-
-  products:
-    create:
-      success: "Produto foi criada com sucesso."
-    update:
-      success: "Produto foi atualizada com sucesso."
-    destroy:
-      success: "Produto foi apagada com sucesso."

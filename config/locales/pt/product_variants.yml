@@ -13,11 +13,3 @@ pt:
         title: "Título"
         description: "Descrição"
         price: "Preço"
-
-  product_variants:
-    create:
-      success: "Variante do produto foi criada com sucesso."
-    update:
-      success: "Variante do produto foi atualizada com sucesso."
-    destroy:
-      success: "Variante do produto foi apagada com sucesso."
