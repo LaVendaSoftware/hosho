@@ -13,8 +13,8 @@ en:
         title: "Title"
         description: "Description"
 
-  categories:
-    reate:
+  products:
+    create:
       success: "Product was successfully created."
     update:
       success: "Product was successfully updated."

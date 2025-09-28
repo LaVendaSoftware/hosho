@@ -13,7 +13,7 @@ pt:
         title: "Título"
         description: "Descrição"
 
-  categories:
+  products:
     create:
       success: "Produto foi criada com sucesso."
     update:
