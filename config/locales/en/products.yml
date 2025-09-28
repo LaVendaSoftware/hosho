@@ -12,11 +12,3 @@ en:
         category_title: "Category"
         title: "Title"
         description: "Description"
-
-  categories:
-    reate:
-      success: "Product was successfully created."
-    update:
-      success: "Product was successfully updated."
-    destroy:
-      success: "Product was successfully destroyed."

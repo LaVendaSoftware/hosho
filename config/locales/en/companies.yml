@@ -18,11 +18,3 @@ en:
         commerce: "Retail & Commerce"
         food: "Food & Beverage"
         automotive: "Automotive"
-
-  companies:
-    create:
-      success: "Company was successfully created."
-    update:
-      success: "Company was successfully updated."
-    destroy:
-      success: "Company was successfully destroyed."

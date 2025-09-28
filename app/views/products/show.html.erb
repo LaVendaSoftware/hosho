@@ -1,3 +1,12 @@
 <%= render(Components::PageTitle::Show.new(record: @product, back_url: products_path)) %>
 
 <%= render("product", product: @product) %>
+
+<hr>
+
+<div class="pt-4 m-2">
+  <%= render(Components::Subtitle.new(tmp(ProductVariant))) %>
+  <hr>
+
+  <%= render("product_variants/index", product_variants: @product.variants) %>
+</div>

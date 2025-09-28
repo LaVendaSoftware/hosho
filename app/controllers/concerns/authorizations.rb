@@ -8,7 +8,7 @@ module Authorizations
   private
 
   def authorize!
-    redirect_to(root_path) unless allowed?
+    redirect_to(root_path, status: :see_other) unless allowed?
   end
 
   def allowed?

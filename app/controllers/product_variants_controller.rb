@@ -1,4 +1,6 @@
 class ProductVariantsController < ApplicationController
+  include Authorizations::Manager
+
   before_action :set_product_variant, only: [:show, :edit, :update, :destroy]
 
   def index

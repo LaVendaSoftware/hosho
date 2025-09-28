@@ -1,0 +1,20 @@
+<% if product_variants.blank? %>
+  <%= render(Components::Alerts::NotFound::Female.new(model: ProductVariant)) %>
+<% else %>
+  <%= render(Components::Table::Root.new(
+        records: product_variants,
+        heads: [
+          ta(ProductVariant, :product),
+          ta(ProductVariant, :title),
+          ta(ProductVariant, :price)
+        ],
+        columns: [
+          :product_title,
+          :title,
+          :formatted_price
+        ],
+        actions: [:link_to_edit, :link_to_show, :link_to_destroy]
+      )) %>
+
+  <%= render(Components::Pagination::Links.new(records: product_variants)) %>
+<% end %>

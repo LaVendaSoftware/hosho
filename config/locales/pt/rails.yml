@@ -9,11 +9,11 @@ en:
       save: "Save %{model}"
   alerts:
     create:
-      success: "Record created successfully."
+      success: "Record was successfully created."
     update:
-      success: "Record updated successfully."
+      success: "Record was successfully updated."
     destroy:
-      success: "Record destroyed successfully."
+      success: "Record was successfully destroyed."
   activerecord:
     attributes:
       created_at: "Created at"
