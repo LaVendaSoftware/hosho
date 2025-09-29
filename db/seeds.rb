@@ -21,5 +21,11 @@ ActiveRecord::Base.transaction do
   puts "* Create manager users"
   User.manager.create!(name: "Manager", email_address: "manager@company.com", password: "manager@company.com", company_ids: [some_company.id])
 
+  puts "* Create seller users"
+  User.seller.create!(name: "Seller", email_address: "seller@company.com", password: "seller@company.com", company_ids: [some_company.id])
+
+  puts "* Create buyer users"
+  User.standard.create!(name: "Buyer", email_address: "buyer@personal.com", password: "buyer@personal.com", company_ids: [some_company.id])
+
   puts "✅ Seed finished successfully"
 end
