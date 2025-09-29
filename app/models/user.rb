@@ -2,14 +2,6 @@ class User < ApplicationRecord
   include PIDable
   include Humanizable
 
-  ROLE_PERMISSIONS = {
-    developer: ["developer"],
-    admin: ["admin", "developer"],
-    manager: ["manager", "admin", "developer"],
-    seller: ["seller", "manager", "admin", "developer"],
-    standard: ["standard", "seller", "manager", "admin", "developer"]
-  }
-
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :company_users, dependent: :destroy
@@ -25,12 +17,18 @@ class User < ApplicationRecord
 
   validate :must_have_company_if_staff
 
+  def company_names
+    companies.pluck(:name)
+  end
+
   def humanized_role
     human_enum_singular_name(:role)
   end
 
   def has_permission?(role_name)
-    role.in?(ROLE_PERMISSIONS[role_name.to_s.to_sym])
+    User.roles[role_name] <= User.roles[role]
+  rescue NoMethodError
+    false
   end
 
   def disabled? = disabled_at.present?
