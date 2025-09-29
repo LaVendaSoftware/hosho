@@ -1,8 +1,7 @@
-<%= render(Components::PageTitle::Index.new(model: Customer, link: new_customer_path, icon: nil)) %>
+<%= render(Components::PageTitle::Index.new(model: Customer, link: new_customer_path, icon: "users")) %>
 
 <% if @customers.blank? %>
   <%= render(Components::Alerts::NotFound::Male.new(model: Customer)) %>
-  <%#= render(Components::Alerts::NotFound::Female.new(model: Customer)) %>
 <% else %>
   <%= render(Components::Table::Root.new(
         records: @customers,
