@@ -12,7 +12,7 @@ class User < ApplicationRecord
   enum :role, {standard: 0, seller: 1, manager: 2, admin: 99, developer: 999}
 
   validates :name, presence: true
-  validates :email_address, presence: true
+  validates :email_address, presence: true, uniqueness: true
   validates :role, inclusion: {in: User.roles.keys}
 
   validate :must_have_company_if_staff

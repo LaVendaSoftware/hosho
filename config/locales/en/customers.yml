@@ -1,0 +1,17 @@
+en:
+  activerecord:
+    models:
+      customer:
+        one: "Client"
+        zero: "Clients"
+        other: "Clients"
+    attributes:
+      customer:
+        user: "User"
+        user_id: "User"
+        address: "Address"
+        name: "Name"
+        email_address: "E-mail"
+        document: "Document"
+        country_code: "Country code"
+        phone: "Phone"

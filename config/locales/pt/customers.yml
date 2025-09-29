@@ -1,0 +1,17 @@
+pt:
+  activerecord:
+    models:
+      customer:
+        one: "Cliente"
+        zero: "Clientes"
+        other: "Clientes"
+    attributes:
+      customer:
+        user: "Usuário"
+        user_id: "Usuário"
+        address: "Endereço"
+        user_name: "Nome"
+        user_email_address: "E-mail"
+        document: "Documento"
+        country_code: "DDI"
+        phone: "Telefone"

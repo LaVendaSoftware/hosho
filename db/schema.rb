@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_26_003619) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_29_084827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -66,6 +66,63 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_26_003619) do
     t.index ["user_id"], name: "index_company_users_on_user_id"
   end
 
+  create_table "connected_accounts", force: :cascade do |t|
+    t.string "pid", default: "", null: false
+    t.string "type"
+    t.bigint "user_id", null: false
+    t.string "external_id", null: false
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pid"], name: "index_connected_accounts_on_pid", unique: true
+    t.index ["type", "user_id", "external_id"], name: "index_connected_accounts_on_type_and_user_id_and_external_id", unique: true
+    t.index ["user_id"], name: "index_connected_accounts_on_user_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "pid", default: "", null: false
+    t.bigint "user_id", null: false
+    t.integer "document_type", default: 0
+    t.string "document", null: false
+    t.string "country_code", null: false
+    t.string "phone", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pid"], name: "index_customers_on_pid", unique: true
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.string "pid", default: "", null: false
+    t.bigint "order_id", null: false
+    t.bigint "product_variant_id", null: false
+    t.integer "quantity", default: 1, null: false
+    t.decimal "unit_price", default: "0.0", null: false
+    t.decimal "discount", default: "0.0", null: false
+    t.virtual "subtotal", type: :decimal, as: "((quantity)::numeric * unit_price)", stored: true
+    t.virtual "total", type: :decimal, as: "(((quantity)::numeric * unit_price) - discount)", stored: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["pid"], name: "index_order_items_on_pid", unique: true
+    t.index ["product_variant_id"], name: "index_order_items_on_product_variant_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "pid", default: "", null: false
+    t.bigint "company_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "status", default: 0, null: false
+    t.string "currency", default: "BRL", null: false
+    t.date "due_date"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_orders_on_company_id"
+    t.index ["pid"], name: "index_orders_on_pid", unique: true
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "product_variants", force: :cascade do |t|
     t.string "pid", default: "", null: false
     t.bigint "product_id", null: false
@@ -115,6 +172,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_26_003619) do
   add_foreign_key "categories", "companies"
   add_foreign_key "company_users", "companies"
   add_foreign_key "company_users", "users"
+  add_foreign_key "connected_accounts", "users"
+  add_foreign_key "customers", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "product_variants"
+  add_foreign_key "orders", "companies"
+  add_foreign_key "orders", "users"
   add_foreign_key "product_variants", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "sessions", "users"
