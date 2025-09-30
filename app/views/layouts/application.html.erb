@@ -52,7 +52,13 @@
                         <%= render(Components::Sidebar::Heading.new("General")) %>
                         <%= render(Components::Sidebar::Link.new(root_path, "Home", "house")) %>
 
+                        <%= render(Components::Sidebar::Link.new(orders_path, tmp(Order), "basket")) %>
+                      </div>
+
+                      <div class="mb-4">
                         <% if Current.user.has_permission?(:seller) %>
+                          <%= render(Components::Sidebar::Heading.new("BackOffice")) %>
+
                           <%= render(Components::Sidebar::Link.new(customers_path, tmp(Customer), "users")) %>
                         <% end %>
 
