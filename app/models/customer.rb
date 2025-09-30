@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :address
 
-  delegate :name, :email_address, to: :user, allow_nil: true, prefix: true
+  delegate :name, :email_address, to: :user, allow_nil: true
 
   validates :document, presence: true
   validates :phone, presence: true

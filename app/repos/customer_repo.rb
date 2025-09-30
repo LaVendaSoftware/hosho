@@ -17,4 +17,14 @@ class CustomerRepo < ApplicationRepo
 
     self
   end
+
+  def by_company(company_id)
+    return none if company_id.blank?
+
+    @collection =
+      collection.joins(user: :company_users)
+        .where(company_users: {company_id:})
+
+    self
+  end
 end

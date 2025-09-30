@@ -1,0 +1,12 @@
+<div id="<%= dom_id(form.object) %>" data-new-record="<%= form.object.new_record? %>" class="my-2 border-t nested-form-wrapper rounded-xl border bg-background shadow overflow-hidden nested-form-wrapper px-4 pt-4 mb-4">
+  <%= form.hidden_field(:id) %>
+
+  <%= render(Components::NestedField::Remove.new) %>
+
+  <div class="grid grid-cols-2 gap-4">
+    <%= render(Components::Form::Select.new(form, :quantity, collection: 0..10)) %>
+    <%= render(Components::Form::BelongsToField.new(form, :product_variant, collection: current_product_variants.pluck(:title, :id))) %>
+    <%= render(Components::Form::CurrencyField.new(form, :unit_price, readonly: true)) %>
+    <%= render(Components::Form::CurrencyField.new(form, :subtotal, readonly: true)) %>
+  </div>
+</div>
