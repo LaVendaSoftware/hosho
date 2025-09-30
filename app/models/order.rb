@@ -20,12 +20,6 @@ class Order < ApplicationRecord
   def humanized_status = human_enum_singular_name(:status)
 
   def product_titles
-    items.map do |item|
-      [
-        item.quantity, " x ",
-        item.product_variant.product_title, " - ",
-        item.product_variant.title
-      ].join
-    end
+    items.map { |item| item.full_product_title }
   end
 end

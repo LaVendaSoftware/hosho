@@ -1,6 +1,4 @@
 shared_context "when there is an order" do
-  include_context "when user is logged in"
-
   let(:category) { create(:category, company: current_company) }
   let(:product) { create(:product, category:) }
   let(:items) do
