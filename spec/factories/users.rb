@@ -5,6 +5,11 @@ FactoryBot.define do
     password { Faker::Internet.password }
     role { "standard" }
 
+    trait :standard do
+      role { "standard" }
+    end
+    factory :standard_user, traits: [:standard]
+
     trait :seller do
       role { "seller" }
     end

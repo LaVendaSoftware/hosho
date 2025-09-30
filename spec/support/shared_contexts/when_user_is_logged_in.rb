@@ -1,4 +1,4 @@
-shared_context "when user is logged in" do
+shared_context "when user is logged in" do |role|
   before do
     visit(new_session_path)
 
@@ -8,7 +8,7 @@ shared_context "when user is logged in" do
     click_on("Login")
   end
 
-  let(:current_user) { create(:user, company_ids: [current_company_id]) }
+  let(:current_user) { create("#{role}_user", company_ids: [current_company_id]) }
   let(:current_company) { create(:company) }
   let(:current_company_id) { current_company.id }
   let(:current_company_pid) { current_company.pid }

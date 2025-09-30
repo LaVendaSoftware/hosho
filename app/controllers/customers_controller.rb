@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  include Authorizations::Seller
+
   before_action :set_customer, only: [:show, :edit, :update]
 
   def index
