@@ -1,5 +1,5 @@
 ActiveRecord::Base.transaction do
-  next unless Rails.env.development? || ToBoolean.call(ENV["CI"])
+  next unless Rails.env.development? || ToBoolean.call(ENV["SEED_SMOKE_TEST"])
 
   puts "🚀 Seed started..."
 

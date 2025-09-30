@@ -75,13 +75,13 @@ jobs:
     permissions: write-all
 
     env:
-      CI: true
       RAILS_ENV: test
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/n10n_test
+      SEED_SMOKE_TEST: true
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/hosho_test
 
     services:
       db:
-        image: postgres:16.0-alpine
+        image: postgres:17.2-alpine
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -108,7 +108,7 @@ jobs:
         run: ruby --version
 
       - name: 📊 Prepare database
-        run: bin/rails db:setup db:test:prepare db:schema:load db:migrate --trace RAILS_ENV=test
+        run: bin/rails db:setup db:test:prepare db:schema:load db:migrate --trace
 
       - name: 📂 Assets precompile
         run: bin/rails assets:precompile
@@ -127,6 +127,6 @@ jobs:
       - name: ✅ Check code coverage
         uses: joshmfrankel/simplecov-check-action@main
         with:
-          minimum_suite_coverage: 10
+          minimum_suite_coverage: 50
           minimum_file_coverage: 10
           github_token: ${{ secrets.GITHUB_TOKEN }}

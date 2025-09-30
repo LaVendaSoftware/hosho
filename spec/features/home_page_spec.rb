@@ -1,5 +1,5 @@
 describe "Home page" do
-  include_context "when user is logged in"
+  include_context "when user is logged in", :standard
 
   before { visit(root_path) }
 

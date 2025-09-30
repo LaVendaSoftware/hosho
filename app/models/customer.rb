@@ -10,6 +10,8 @@ class Customer < ApplicationRecord
 
   delegate :name, :email_address, to: :user, allow_nil: true
 
+  enum :document_type, {cpf: 0}
+
   validates :document, presence: true
   validates :phone, presence: true
 end

@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     @order = repo.build(create_order_params)
 
     @order.items.map do |order_item|
-      order_item.unit_price = order_item.product_variant.price
+      order_item.unit_price = order_item.product_variant_price
     end
 
     if @order.save
@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
   def order_params
     params.expect(order: [
       :customer_id,
-      items_attributes: [[:quantity, :product_variant_id]]
+      items_attributes: [[:id, :quantity, :product_variant_id]]
     ])
   end
 end

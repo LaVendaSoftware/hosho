@@ -1,4 +1,4 @@
-<%= render(Components::PageTitle::Index.new(model: Order, link: new_order_path, icon: nil)) %>
+<%= render(Components::PageTitle::Index.new(model: Order, link: new_order_path, icon: "basket")) %>
 
 <% if @orders.blank? %>
   <%= render(Components::Alerts::NotFound::Male.new(model: Order)) %>
