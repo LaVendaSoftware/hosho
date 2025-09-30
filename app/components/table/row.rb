@@ -16,7 +16,13 @@ class Components::Table::Row < Components::Base
       end
 
       @columns.each do |column|
-        TableCell { @record.send(column) }
+        TableCell do
+          if @record.send(column).is_a?(Array)
+            @record.send(column).join(", ")
+          else
+            @record.send(column).presence || "—"
+          end
+        end
       end
     end
   end

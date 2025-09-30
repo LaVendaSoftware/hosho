@@ -52,6 +52,10 @@
                         <%= render(Components::Sidebar::Heading.new("General")) %>
                         <%= render(Components::Sidebar::Link.new(root_path, "Home", "house")) %>
 
+                        <% if Current.user.has_permission?(:seller) %>
+                          <%= render(Components::Sidebar::Link.new(customers_path, tmp(Customer), "users")) %>
+                        <% end %>
+
                         <% if Current.user.has_permission?(:manager) %>
                           <%= render(Components::Sidebar::Link.new(categories_path, tmp(Category), "tag")) %>
                           <%= render(Components::Sidebar::Link.new(products_path, tmp(Product), "shopping-bag-open")) %>

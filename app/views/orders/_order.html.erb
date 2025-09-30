@@ -1,0 +1,11 @@
+<div id="<%= dom_id(order) %>">
+  <%= render(Components::Page::Show.new(
+        record: order,
+        columns: [
+          :humanized_status,
+          :customer_name,
+          :customer_email_address,
+          :product_titles
+        ]
+      )) %>
+</div>

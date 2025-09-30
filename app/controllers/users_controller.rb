@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   private
 
   def repo
-    @repo ||= ApplicationRepo.new(User.not_developer)
+    @repo ||= UserRepo.new(User).by_user(Current.user)
   end
 
   def set_user

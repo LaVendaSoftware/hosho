@@ -1,0 +1,18 @@
+pt:
+  activerecord:
+    models:
+      order_item:
+        one: "Item do pedido"
+        zero: "Itens do pedido"
+        other: "Itens do pedido"
+    attributes:
+      order_item:
+        order: "Pedido"
+        order_id: "Pedido"
+        product_variant: "Produto"
+        product_variant_id: "Produto"
+        quantity: "Quantidade"
+        unit_price: "Preço unitário"
+        discount: "Desconto"
+        subtotal: "Subtotal"
+        total: "Total"

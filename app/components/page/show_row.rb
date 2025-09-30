@@ -15,7 +15,11 @@ class Components::Page::ShowRow < Components::Base
           "w-32 text-lg font-normal text-gray-500 sm:text-right dark:text-gray-400 shrink-0"
       ) { @label }
       h3(class: "text-lg font-semibold text-gray-900 dark:text-white") do
-        span { @value.presence || "—" }
+        if @value.is_a?(Array)
+          @value.join(", ")
+        else
+          @value.presence || "—"
+        end
       end
     end
   end

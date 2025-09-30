@@ -1,0 +1,19 @@
+pt:
+  activerecord:
+    models:
+      connected_account:
+        one: "Conta"
+        zero: "Contas"
+        other: "Contas"
+      stripe/customer:
+        one: "Stripe cliente"
+        zero: "Stripe clientes"
+        other: "Stripe clientes"
+    attributes:
+      connected_account:
+        user: "Usuário"
+        user_id: "Usuário"
+        user_name: "Usuário"
+        external_id: "ID"
+      stripe/customer:
+        external_id: "ID do cliente"

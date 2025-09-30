@@ -1,22 +1,21 @@
 class ApplicationController < ActionController::Base
   include Authentication
+  include SetCurrentCompany
 
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
-  helper_method :current_company, :current_companies, :current_categories
-
-  def current_company
-    current_companies.find_by(pid: session_company_pid) || current_companies.first
-  end
-
-  def current_companies
-    @current_companies ||= CompanyRepo.new(Company).by_user(Current.user).all
-  end
+  helper_method :current_categories, :current_product_variants, :current_customers
 
   def current_categories
-    @current_categories ||= CategoryRepo.new(Category).by_company(current_company).all
+    @current_categories ||= CategoryRepo.new(Category).by_company(current_company_id).all
   end
 
-  def session_company_pid = cookies.signed.permanent[:current_company_pid]
+  def current_product_variants
+    @current_product_variants ||= ProductVariantRepo.new(ProductVariant).by_company(current_company_id).all
+  end
+
+  def current_customers
+    @current_customers ||= CustomerRepo.new(Customer).by_company(current_company_id).all
+  end
 end

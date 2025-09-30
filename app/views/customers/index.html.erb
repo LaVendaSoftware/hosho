@@ -1,0 +1,26 @@
+<%= render(Components::PageTitle::Index.new(model: Customer, link: new_customer_path, icon: "users")) %>
+
+<% if @customers.blank? %>
+  <%= render(Components::Alerts::NotFound::Male.new(model: Customer)) %>
+<% else %>
+  <%= render(Components::Table::Root.new(
+        records: @customers,
+        heads: [
+          ta(Customer, :name),
+          ta(Customer, :email_address),
+          ta(Customer, :country_code),
+          ta(Customer, :phone),
+          ta(Customer, :document)
+        ],
+        columns: [
+          :user_name,
+          :user_email_address,
+          :country_code,
+          :phone,
+          :document
+        ],
+        actions: [:link_to_edit, :link_to_show, :link_to_destroy]
+      )) %>
+
+  <%= render(Components::Pagination::Links.new(records: @customers)) %>
+<% end %>

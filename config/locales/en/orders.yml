@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    models:
+      order:
+        one: "Order"
+        zero: "Orders"
+        other: "Orders"
+    attributes:
+      order:
+        company: "Company"
+        company_id: "Company"
+        company_name: "Company"
+        customer: "Customer"
+        customer_id: "Customer"
+        customer_name: "Customer"
+        customer_email_address: "E-mail"
+        user: "User"
+        user_id: "User"
+        user_name: "User"
+        status: "Status"
+      order/statuses:
+        pending: "Pending"
+        ready: "Ready"
