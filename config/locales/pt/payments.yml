@@ -16,8 +16,8 @@ pt:
         stripe: "Stripe"
       payment/statuses:
         pending: "Pendente"
+        processing: "Processando"
         paid: "Pago"
-        overdue: "Vencido"
-        refunded: "Estornado"
+        refused: "Recusado"
         canceled: "Cancelado"
-        expired: "Expirado"
+        refunded: "Estornado"

@@ -15,7 +15,7 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :items, allow_destroy: true
 
-  enum :status, {draft: 0, ready: 1, partially_paid: 2, paid: 3, cancelled: 4}
+  enum :status, {draft: 0, awaiting_payment: 1, partially_paid: 2, paid: 3, cancelled: 4}
 
   validates :items, length: {minimum: 1}
 
