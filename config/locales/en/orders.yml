@@ -19,5 +19,8 @@ en:
         user_name: "User"
         status: "Status"
       order/statuses:
-        pending: "Pending"
+        draft: "Draft"
         ready: "Ready"
+        partially_paid: "Partially paid"
+        paid: "Paid"
+        cancelled: "Cancelled"
