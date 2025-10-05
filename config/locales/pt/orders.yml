@@ -19,5 +19,8 @@ pt:
         user_name: "Usuário"
         status: "Status"
       order/statuses:
-        pending: "Pendente"
+        draft: "Rascunho"
         ready: "Pronto"
+        partially_paid: "Parcialmente pago"
+        paid: "Pago"
+        cancelled: "Cancelado"
