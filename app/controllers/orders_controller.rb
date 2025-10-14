@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.expect(order: [
-      :customer_id,
+      :customer_id, :due_date,
       items_attributes: [[:id, :quantity, :product_variant_id]]
     ])
   end
