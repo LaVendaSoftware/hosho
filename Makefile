@@ -40,3 +40,21 @@ biome:
 
 biome-fix:
 	bin/biome --write
+
+access-server:
+	ssh root@188.245.209.207;
+
+deploy-staging:
+	bin/kamal deploy --verbose
+
+release-lock:
+	bin/kamal lock release --verbose
+
+logs-staging:
+	bin/kamal app logs --verbose --follow
+
+console-staging:
+	bin/kamal console --verbose
+
+migrate-staging:
+	bin/kamal migrate --verbose
