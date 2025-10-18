@@ -5,28 +5,36 @@
 import { application } from "./application";
 
 import HelloController from "./hello_controller";
+
 application.register("hello", HelloController);
 
 import NestedFormController from "./nested_form_controller";
+
 application.register("nested-form", NestedFormController);
 
 import RubyUi__CheckboxGroupController from "./ruby_ui/checkbox_group_controller";
+
 application.register(
   "ruby-ui--checkbox-group",
   RubyUi__CheckboxGroupController,
 );
 
 import RubyUi__ComboboxController from "./ruby_ui/combobox_controller";
+
 application.register("ruby-ui--combobox", RubyUi__ComboboxController);
 
 import RubyUi__CommandController from "./ruby_ui/command_controller";
+
 application.register("ruby-ui--command", RubyUi__CommandController);
 
 import RubyUi__FormFieldController from "./ruby_ui/form_field_controller";
+
 application.register("ruby-ui--form-field", RubyUi__FormFieldController);
 
 import RubyUi__SelectController from "./ruby_ui/select_controller";
+
 application.register("ruby-ui--select", RubyUi__SelectController);
 
 import RubyUi__SelectItemController from "./ruby_ui/select_item_controller";
+
 application.register("ruby-ui--select-item", RubyUi__SelectItemController);
