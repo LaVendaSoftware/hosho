@@ -15,7 +15,7 @@
           :email_address,
           :humanized_role
         ],
-        actions: [:link_to_edit, :link_to_show]
+        actions: [Components::LinkTo::Edit, Components::LinkTo::Show]
       )) %>
 
   <%= render(Components::Pagination::Links.new(records: @users)) %>

@@ -11,7 +11,13 @@ class Components::Table::Row < Components::Base
     TableRow do
       if @actions.present?
         TableCell(class: "flex gap-2") do
-          @actions.each { |action| send(action, @record) }
+          @actions.each do |action|
+            if action.in?([:link_to_edit, :link_to_show, :link_to_destroy])
+              send(action, @record)
+            else
+              render(action.new(@record))
+            end
+          end
         end
       end
 
