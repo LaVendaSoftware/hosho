@@ -34,7 +34,8 @@ ActiveRecord::Base.transaction do
 
   puts " * Catavento - Create categories and products"
   livros = catavento.categories.create!(title: "Livros")
-  livros.products.create!(
+  catavento.products.create!(
+    category: livros,
     title: "Material didático de robótica",
     variants_attributes: [
       {title: "Do 1º ao 5º ano", price: 100},

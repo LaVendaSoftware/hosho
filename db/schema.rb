@@ -139,13 +139,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_094441) do
 
   create_table "products", force: :cascade do |t|
     t.string "pid", default: "", null: false
-    t.bigint "category_id", null: false
+    t.bigint "company_id", null: false
+    t.bigint "category_id"
     t.string "title", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id", "title"], name: "index_products_on_category_id_and_title", unique: true
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["pid"], name: "index_products_on_pid", unique: true
   end
 
@@ -183,5 +185,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_094441) do
   add_foreign_key "orders", "users"
   add_foreign_key "product_variants", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "companies"
   add_foreign_key "sessions", "users"
 end
