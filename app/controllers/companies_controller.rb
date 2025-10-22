@@ -56,6 +56,9 @@ class CompaniesController < ApplicationController
         :name, :nif, :industry,
         address_attributes: [
           :id,
+          :source,
+          :country,
+          :raw_address,
           :zip_code,
           :street_name,
           :building_number,

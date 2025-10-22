@@ -1,12 +1,25 @@
-<%= form.hidden_field(:id) %>
+<div data-controller="addresses">
+  <%= form.hidden_field(:id) %>
+  <%= form.hidden_field(:source, data: {addresses_target: "source"}, class: "border") %>
+  <%= form.hidden_field(:raw_address, data: {addresses_target: "rawAddress"}, class: "border") %>
 
-<div class="grid grid-cols-3 gap-4">
-  <%= render(Components::Form::TextField.new(form, :zip_code)) %>
-  <%= render(Components::Form::TextField.new(form, :street_name)) %>
-  <%= render(Components::Form::TextField.new(form, :building_number)) %>
-  <%= render(Components::Form::TextField.new(form, :district)) %>
-  <%= render(Components::Form::TextField.new(form, :city)) %>
-  <%= render(Components::Form::TextField.new(form, :state)) %>
+  <div class="grid grid-cols-2 gap-4 items-start">
+    <%= render(Components::Form::TextField.new(form, :zip_code, data: {addresses_target: "zipCode", action: "keyup->addresses#change", mask: "zipCode"})) %>
+    <%= render(Components::Form::CountrySelect.new(form)) %>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4 items-start">
+    <div class="col-span-2">
+      <%= render(Components::Form::TextField.new(form, :street_name, data: {addresses_target: "streetName"})) %>
+    </div>
+    <%= render(Components::Form::TextField.new(form, :building_number)) %>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4 items-start">
+    <%= render(Components::Form::TextField.new(form, :district, data: {addresses_target: "district"})) %>
+    <%= render(Components::Form::TextField.new(form, :city, data: {addresses_target: "city"})) %>
+    <%= render(Components::Form::TextField.new(form, :state, data: {addresses_target: "state"})) %>
+  </div>
+
+  <%= render(Components::Form::TextAreaField.new(form, :reference)) %>
 </div>
-
-<%= render(Components::Form::TextField.new(form, :reference)) %>

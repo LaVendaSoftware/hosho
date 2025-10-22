@@ -2,4 +2,11 @@
 
 <%= render(Components::Form::TextField.new(form, :name)) %>
 <%= render(Components::Form::EmailField.new(form, :email_address)) %>
-<%= render(Components::Form::PasswordField.new(form, :password)) if form.object.new_record? %>
+<%= if form.object.new_record?
+      render(Components::Form::TextField.new(
+        form,
+        :password,
+        value: SecureRandom.alphanumeric,
+        data: {hint: "Uia mermo!"}
+      ))
+    end %>

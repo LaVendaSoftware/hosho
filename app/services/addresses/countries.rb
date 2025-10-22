@@ -251,11 +251,13 @@ module Addresses
     end
 
     def self.country_name_options
-      I18n.t("countries").map { |code, name| [name, code.to_s] }
+      I18n.t("countries").map { |code, name| ["#{name} (#{code})", code.to_s] }
     end
 
     def self.dialing_code_options
-      DIALING_CODES.map { |code, dialing_code| [I18n.t("countries.#{code}"), dialing_code] }
+      DIALING_CODES.map do |code, dialing_code|
+        ["#{I18n.t("countries.#{code}")} (+#{dialing_code})", dialing_code]
+      end
     end
   end
 end
