@@ -14,4 +14,5 @@ class Customer < ApplicationRecord
 
   validates :document, presence: true
   validates :phone, presence: true
+  validates :phone, presence: true
 end

@@ -18,10 +18,10 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = repo.build(customer_params)
+    @customer = repo.build(new_customer_params)
 
     if @customer.save
-      redirect_to(@customer, notice: t("alerts.create.success"))
+      redirect_after_save(notice: t("alerts.update.success"))
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
-      redirect_to(@customer, notice: t("alerts.update.success"), status: :see_other)
+      redirect_after_save(notice: t("alerts.update.success"))
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,12 +37,27 @@ class CustomersController < ApplicationController
 
   private
 
+  def redirect_after_save(notice:)
+    if params[:commit_and_new_order]
+      redirect_to(new_order_path(customer_id: @customer.pid), notice:)
+    else
+      redirect_to(@customer, notice:, status: :see_other)
+    end
+  end
+
   def repo
     @repo ||= CustomerRepo.new(Customer)
   end
 
   def set_customer
     @customer = repo.find_by!(pid: params.expect(:id))
+  end
+
+  def new_customer_params
+    customer_params.merge(user_attributes: {
+      **customer_params[:user_attributes],
+      company_ids: [current_company_id]
+    })
   end
 
   def customer_params
@@ -58,6 +73,9 @@ class CustomersController < ApplicationController
       ],
       address_attributes: [
         :id,
+        :source,
+        :country,
+        :raw_address,
         :zip_code,
         :street_name,
         :building_number,
