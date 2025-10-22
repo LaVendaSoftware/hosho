@@ -3,14 +3,14 @@
 
   <%= render(Components::NestedField::Remove.new) %>
 
-  <div class="grid grid-cols-2 gap-4 items-start" data-controller="product-variants">
+  <div class="grid grid-cols-2 gap-4 items-start" data-controller="order-items">
     <%= render(Components::Form::Select.new(
           form,
           :quantity,
           collection: 0..10,
           data: {
-            action: "change->product-variants#change",
-            product_variants_target: "quantity"
+            action: "change->order-items#change",
+            order_items_target: "quantity"
           }
         )) %>
     <%= render(Components::Form::BelongsToField.new(
@@ -18,8 +18,8 @@
           :product_variant,
           collection: current_product_variants.pluck(:title, :id),
           data: {
-            action: "change->product-variants#change",
-            product_variants_target: "productVariantId"
+            action: "change->order-items#change",
+            order_items_target: "productVariantId"
           }
         )) %>
     <%= render(Components::Form::CurrencyField.new(
@@ -28,7 +28,7 @@
           readonly: true,
           data: {
             mask: "currency",
-            product_variants_target: "unitPrice"
+            order_items_target: "unitPrice"
           }
         )) %>
     <%= render(Components::Form::CurrencyField.new(
@@ -37,7 +37,7 @@
           readonly: true,
           data: {
             mask: "currency",
-            product_variants_target: "subtotal"
+            order_items_target: "subtotal"
           }
         )) %>
   </div>

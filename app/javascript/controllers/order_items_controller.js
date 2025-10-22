@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="product-variants"
+// Connects to data-controller="order-items"
 export default class extends Controller {
   static targets = ["productVariantId", "unitPrice", "quantity", "subtotal"];
 
