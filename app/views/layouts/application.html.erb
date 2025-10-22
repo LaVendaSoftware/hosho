@@ -22,7 +22,7 @@
     <%= javascript_include_tag("application", "data-turbo-track": "reload", type: "module") %>
   </head>
 
-  <body class="dark:bg-gray-950">
+  <body class="dark:bg-gray-950" data-controller="masks">
     <div class="bg-background">
       <div data-slot="sidebar-wrapper" style="--sidebar-width:calc(var(--spacing) * 72);--sidebar-width-icon:3rem;--header-height:calc(var(--spacing) * 12)" class="group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full">
         <div class="group peer text-sidebar-foreground hidden md:block" data-state="expanded" data-collapsible="" data-variant="inset" data-side="left" data-slot="sidebar">
