@@ -8,6 +8,8 @@ class Components::Companies::Switcher < Components::Base
     return if @companies.blank?
 
     CommandDialog do
+      div(data: {ruby_ui__command_target: "input"})
+
       CommandDialogTrigger do
         Button(variant: "outline", class: "w-56 pr-2 pl-3 justify-between") do
           div(class: "flex items-center space-x-1") do
@@ -18,6 +20,7 @@ class Components::Companies::Switcher < Components::Base
           end
         end
       end
+
       CommandDialogContent do
         Command do
           CommandInput(placeholder: t(".search_placeholder"))
