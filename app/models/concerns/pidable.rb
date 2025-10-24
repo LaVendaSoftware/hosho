@@ -5,7 +5,7 @@ module PIDable
     before_create :generate_pid
 
     def generate_pid
-      self.pid = GeneratePID.call if pid.blank?
+      self.pid = GeneratePID.call(pid_prefix) if pid.blank?
     end
 
     def self.find(pid)
@@ -17,5 +17,9 @@ module PIDable
     def to_param = pid
 
     def to_key = [to_param]
+
+    def pid_prefix
+      "dev" if Rails.env.development?
+    end
   end
 end
