@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= page_title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield(:head) %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <%= favicon_link_tag("favicon.png") %>
+    <%= favicon_link_tag("favicon.png", type: "image/png") %>
+    <%= favicon_link_tag("favicon.png", rel: "apple-touch-icon") %>
+
+    <%= stylesheet_link_tag("application", "data-turbo-track": "reload") %>
+    <%= javascript_include_tag("application", "data-turbo-track": "reload", type: "module") %>
+  </head>
+
+  <body class="dark:bg-gray-950" data-controller="masks">
+    <div class="bg-background">
+      <div data-slot="sidebar-wrapper" style="--sidebar-width:calc(var(--spacing) * 72);--sidebar-width-icon:3rem;--header-height:calc(var(--spacing) * 12)" class="group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full">
+        <div class="group peer text-sidebar-foreground hidden md:block" data-state="expanded" data-collapsible="" data-variant="inset" data-side="left" data-slot="sidebar">
+          <div data-slot="sidebar-gap" class="relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear group-data-[collapsible=offcanvas]:w-0 group-data-[side=right]:rotate-180 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"></div>
+
+          <div data-slot="sidebar-container" class="fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]">
+            <%# Image and app name %>
+            <div data-sidebar="sidebar" data-slot="sidebar-inner" class="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm">
+              <div data-slot="sidebar-header" data-sidebar="header" class="flex flex-col gap-2 p-2">
+                <ul data-slot="sidebar-menu" data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-1">
+                  <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+                    <%= link_to(root_path, class: "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm data-[slot=sidebar-menu-button]:!p-1.5", data: {slot: "sidebar-menu-button", sidebar: "menu-button", size: "default", active: false}) do %>
+                      <%= image_tag("logo.png", width: 24) %>
+                      <span class="text-base font-semibold"><%= app_name %></span>
+                    <% end %>
+
+                  </li>
+                </ul>
+                <%= render(Components::Companies::Switcher.new(current_companies, current_company)) %>
+              </div>
+
+              <div data-slot="sidebar-content" data-sidebar="content" class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden">
+                <div data-slot="sidebar-group" data-sidebar="group" class="relative flex w-full min-w-0 flex-col p-2">
+                  <div data-slot="sidebar-group-content" data-sidebar="group-content" class="w-full text-sm flex flex-col gap-2">
+                    <%= render(Components::Sidebar::Root.new) do %>
+                      <div class="mb-4">
+                        <%= render(Components::Sidebar::Heading.new("General")) %>
+                        <%= render(Components::Sidebar::Link.new(root_path, "Home", "house")) %>
+
+                        <%= render(Components::Sidebar::Link.new(orders_path, tmp(Order), "basket")) %>
+                      </div>
+
+                      <div class="mb-4">
+                        <% if Current.user.has_permission?(:seller) %>
+                          <%= render(Components::Sidebar::Heading.new("BackOffice")) %>
+
+                          <%= render(Components::Sidebar::Link.new(customers_path, tmp(Customer), "users")) %>
+                        <% end %>
+
+                        <% if Current.user.has_permission?(:manager) %>
+                          <%= render(Components::Sidebar::Link.new(categories_path, tmp(Category), "tag")) %>
+                          <%= render(Components::Sidebar::Link.new(products_path, tmp(Product), "shopping-bag-open")) %>
+                        <% end %>
+                      </div>
+
+                      <% if Current.user.has_permission?(:admin) %>
+                        <%= render(Components::Sidebar::Heading.new("Admin")) %>
+
+                        <%= render(Components::Sidebar::Link.new(users_path, tmp(User), "users")) %>
+                        <%= render(Components::Sidebar::Link.new(companies_path, tmp(Company), "building-office")) %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+                <%# Settings links %>
+                <%# <div data-slot="sidebar-group" data-sidebar="group" class="relative flex w-full min-w-0 flex-col p-2 mt-auto">
+                  <div data-slot="sidebar-group-content" data-sidebar="group-content" class="w-full text-sm">
+                    <ul data-slot="sidebar-menu" data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-1">
+                      <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+                        <a href="#" data-slot="sidebar-menu-button" data-sidebar="menu-button" data-size="default" data-active="false" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm">
+                          < %= render(Components::Icon.new("gear")) % >
+                          <span>Settings</span>
+                        </a>
+                      </li>
+                      <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+                        <a href="#" data-slot="sidebar-menu-button" data-sidebar="menu-button" data-size="default" data-active="false" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm">
+                          < %= render(Components::Icon.new("question")) % >
+                          <span>Get Help</span>
+                        </a>
+                      </li>
+                      <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+                        <a href="#" data-slot="sidebar-menu-button" data-sidebar="menu-button" data-size="default" data-active="false" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-8 text-sm">
+                          < %= render(Components::Icon.new("magnifying-glass")) % >
+                          <span>Search</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div> %>
+              </div>
+
+              <div data-slot="sidebar-footer" data-sidebar="footer" class="flex flex-col gap-2 p-2">
+                <ul data-slot="sidebar-menu" data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-1">
+                  <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+                    <button data-slot="dropdown-menu-trigger" data-sidebar="menu-button" data-size="lg" data-active="false" class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-12 text-sm group-data-[collapsible=icon]:p-0! data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground" type="button" id="<%= Current.user.pid %>" aria-haspopup="menu" aria-expanded="false" data-state="closed">
+                      <span data-slot="avatar" class="relative flex size-8 shrink-0 overflow-hidden h-8 w-8 rounded-lg grayscale">
+                        <%= image_tag("lavenda.png", width: 25, class: "aspect-square size-full") %>
+                      </span>
+                      <div class="grid flex-1 text-left text-sm leading-tight">
+                        <span class="truncate font-medium"><%= Current.user.name %></span>
+                        <span class="text-muted-foreground truncate text-xs"><%= Current.user.email_address %></span>
+                      </div>
+                      <%= render(Components::Icon.new("dots-three-vertical")) %>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <main data-slot="sidebar-inset" class="bg-background relative flex w-full flex-1 flex-col md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2">
+          <div class="flex flex-1 flex-col">
+            <div class="@container/main flex flex-1 flex-col gap-2">
+              <%= content_for(:header) %>
+
+              <%= render(Components::Alerts::Success.new(message: notice)) %>
+              <%= render(Components::Alerts::Error.new(message: alert)) %>
+
+              <%= yield %>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
