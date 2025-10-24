@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    models:
+      payment:
+        one: "Order item"
+        zero: "Order items"
+        other: "Order items"
+    attributes:
+      payment:
+        order: "Order"
+        order_id: "Order"
+        total: "Total"
+        gateway_payment_id: "External ID"
+        paid_at: "Paid at"
+      payment/gateway_types:
+        stripe: "Stripe"
+      payment/statuses:
+        pending: "Pending"
+        processing: "Processing"
+        paid: "Paid"
+        refused: "Refused"
+        canceled: "Canceled"
+        refunded: "Refunded"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_29_094441) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_30_200203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -125,6 +125,30 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_094441) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "payment_attempts", force: :cascade do |t|
+    t.bigint "payment_id", null: false
+    t.string "payment_intent_id"
+    t.jsonb "payload"
+    t.datetime "requested_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_id"], name: "index_payment_attempts_on_payment_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "pid", default: "", null: false
+    t.bigint "order_id", null: false
+    t.integer "status", default: 0, null: false
+    t.decimal "total", default: "0.0", null: false
+    t.integer "gateway_type", default: 0, null: false
+    t.string "gateway_payment_id"
+    t.datetime "paid_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
+    t.index ["pid"], name: "index_payments_on_pid", unique: true
+  end
+
   create_table "product_variants", force: :cascade do |t|
     t.string "pid", default: "", null: false
     t.bigint "product_id", null: false
@@ -183,6 +207,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_094441) do
   add_foreign_key "orders", "companies"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "users"
+  add_foreign_key "payment_attempts", "payments"
+  add_foreign_key "payments", "orders"
   add_foreign_key "product_variants", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "companies"
