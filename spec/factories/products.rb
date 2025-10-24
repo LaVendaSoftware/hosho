@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :product do
+    company
     category
 
     title { Faker::Name.name }
