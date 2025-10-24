@@ -1,4 +1,6 @@
 class ProductRepo < ApplicationRepo
+  include Scopes::ByCompany
+
   def build(attributes = {})
     product = all.new(attributes)
     product.variants.build if product.variants.blank?

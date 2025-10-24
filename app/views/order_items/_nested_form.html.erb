@@ -3,10 +3,42 @@
 
   <%= render(Components::NestedField::Remove.new) %>
 
-  <div class="grid grid-cols-2 gap-4">
-    <%= render(Components::Form::Select.new(form, :quantity, collection: 0..10)) %>
-    <%= render(Components::Form::BelongsToField.new(form, :product_variant, collection: current_product_variants.pluck(:title, :id))) %>
-    <%= render(Components::Form::CurrencyField.new(form, :unit_price, readonly: true)) %>
-    <%= render(Components::Form::CurrencyField.new(form, :subtotal, readonly: true)) %>
+  <div class="grid grid-cols-2 gap-4 items-start" data-controller="order-items">
+    <%= render(Components::Form::Select.new(
+          form,
+          :quantity,
+          collection: 0..10,
+          data: {
+            action: "change->order-items#change",
+            order_items_target: "quantity"
+          }
+        )) %>
+    <%= render(Components::Form::BelongsToField.new(
+          form,
+          :product_variant,
+          collection: current_product_variants.pluck(:title, :id),
+          data: {
+            action: "change->order-items#change",
+            order_items_target: "productVariantId"
+          }
+        )) %>
+    <%= render(Components::Form::CurrencyField.new(
+          form,
+          :unit_price,
+          readonly: true,
+          data: {
+            mask: "currency",
+            order_items_target: "unitPrice"
+          }
+        )) %>
+    <%= render(Components::Form::CurrencyField.new(
+          form,
+          :subtotal,
+          readonly: true,
+          data: {
+            mask: "currency",
+            order_items_target: "subtotal"
+          }
+        )) %>
   </div>
 </div>

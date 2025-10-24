@@ -9,6 +9,10 @@ class Components::Form::Select < Components::Form::TextField
   private
 
   def input
-    @form.select(@attribute, @collection, {include_blank: "Selecione..."}, {class: input_classes, **@options})
+    @form.select(@attribute, @collection, select_options, {class: input_classes, **@options})
+  end
+
+  def select_options
+    {include_blank: @options.delete(:include_blank).presence || "Selecione..."}
   end
 end

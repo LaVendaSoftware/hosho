@@ -55,3 +55,5 @@ gem "ulid", "~> 1.4", require: "ulid"
 gem "ucasy", "~> 0.3.3"
 # https://github.com/maful/ruby-phosphor-icons#usage
 gem "phosphor_icons", "~> 0.3.0"
+# https://github.com/stevegraham/certified
+gem "certified", "~> 1.0"

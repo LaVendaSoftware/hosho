@@ -1,7 +1,8 @@
 class Product < ApplicationRecord
   include PIDable
 
-  belongs_to :category
+  belongs_to :company
+  belongs_to :category, optional: true
 
   has_many :variants, class_name: "ProductVariant", dependent: :restrict_with_error
 

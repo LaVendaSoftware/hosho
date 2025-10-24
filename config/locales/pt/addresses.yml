@@ -7,7 +7,7 @@ pt:
         other: "Endereços"
     attributes:
       address:
-        country: "País"
+        country: "País/Região"
         zip_code: "Código postal"
         street_name: "Rua"
         building_number: "Número"

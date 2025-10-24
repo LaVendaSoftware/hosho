@@ -43,7 +43,7 @@ class ProductVariantsController < ApplicationController
   private
 
   def repo
-    @repo ||= ApplicationRepo.new(ProductVariant)
+    @repo ||= ProductVariantRepo.new(ProductVariant).by_company(current_company)
   end
 
   def set_product_variant

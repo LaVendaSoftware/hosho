@@ -15,6 +15,7 @@ ActiveRecord::Base.transaction do
   puts "## Catavento - Create company"
   catavento = Company.other.create!(name: "Catavento Digital", nif: "49671710000132")
   catavento.create_address(
+    country: "BR",
     addressable: catavento,
     zip_code: "02410-010",
     street_name: "Rua João de LAET",
@@ -34,7 +35,8 @@ ActiveRecord::Base.transaction do
 
   puts " * Catavento - Create categories and products"
   livros = catavento.categories.create!(title: "Livros")
-  livros.products.create!(
+  catavento.products.create!(
+    category: livros,
     title: "Material didático de robótica",
     variants_attributes: [
       {title: "Do 1º ao 5º ano", price: 100},
@@ -55,6 +57,7 @@ ActiveRecord::Base.transaction do
       company_ids: [catavento.id]
     },
     address_attributes: {
+      country: "BR",
       zip_code: "52081730",
       street_name: "Rua da Carola",
       building_number: "851",
@@ -66,11 +69,11 @@ ActiveRecord::Base.transaction do
 
   puts "## Dummy - Create company"
   some_company = Company.other.create!(name: "Some company", nif: "567812349")
-  some_company.create_address
-  Company.tourism.create!(name: "Sun & Sea Tours", nif: "123456789").create_address
-  Company.commerce.create!(name: "HomeStyle Furniture", nif: "987654321").create_address
-  Company.food.create!(name: "Bean & Brew Café", nif: "456123789").create_address
-  Company.automotive.create!(name: "AutoDrive Dealership", nif: "789321456").create_address
+  some_company.create_address(country: Addresses::Countries::DIALING_CODES.keys.sample)
+  Company.tourism.create!(name: "Sun & Sea Tours", nif: "123456789").create_address(country: Addresses::Countries::DIALING_CODES.keys.sample)
+  Company.commerce.create!(name: "HomeStyle Furniture", nif: "987654321").create_address(country: Addresses::Countries::DIALING_CODES.keys.sample)
+  Company.food.create!(name: "Bean & Brew Café", nif: "456123789").create_address(country: Addresses::Countries::DIALING_CODES.keys.sample)
+  Company.automotive.create!(name: "AutoDrive Dealership", nif: "789321456").create_address(country: Addresses::Countries::DIALING_CODES.keys.sample)
 
   puts " * Dummy - Create manager users"
   User.manager.create!(name: "Manager", email_address: "manager@company.com", password: "manager@company.com", company_ids: [some_company.id])

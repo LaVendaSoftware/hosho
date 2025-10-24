@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
   private
 
   def repo
-    @repo ||= ProductRepo.new(Product).by_category(current_categories.ids)
+    @repo ||= ProductRepo.new(Product).by_company(current_company)
   end
 
   def set_product

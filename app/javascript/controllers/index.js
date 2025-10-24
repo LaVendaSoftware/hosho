@@ -4,11 +4,20 @@
 
 import { application } from "./application";
 
+import AddressesController from "./addresses_controller";
+application.register("addresses", AddressesController);
+
 import HelloController from "./hello_controller";
 application.register("hello", HelloController);
 
+import MasksController from "./masks_controller";
+application.register("masks", MasksController);
+
 import NestedFormController from "./nested_form_controller";
 application.register("nested-form", NestedFormController);
+
+import OrderItemsController from "./order_items_controller";
+application.register("order-items", OrderItemsController);
 
 import RubyUi__CheckboxGroupController from "./ruby_ui/checkbox_group_controller";
 application.register(

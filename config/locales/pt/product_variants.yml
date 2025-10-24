@@ -11,5 +11,5 @@ pt:
         product_id: "Produto"
         product_title: "Produto"
         title: "Título"
-        description: "Descrição"
+        description: "Informação extra"
         price: "Preço"

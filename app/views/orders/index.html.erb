@@ -15,7 +15,7 @@
           :customer_name,
           :customer_email_address
         ],
-        actions: [:link_to_edit, :link_to_show, :link_to_destroy]
+        actions: [Components::LinkTo::Edit, Components::LinkTo::Show, Components::LinkTo::Destroy]
       )) %>
 
   <%= render(Components::Pagination::Links.new(records: @orders)) %>
